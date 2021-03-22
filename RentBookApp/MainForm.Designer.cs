@@ -57,6 +57,7 @@ namespace RentBookApp
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -94,6 +95,7 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
+            this.tabQuanLi.Controls.Add(this.button2);
             this.tabQuanLi.Controls.Add(this.dataGridView1);
             this.tabQuanLi.Controls.Add(this.label11);
             this.tabQuanLi.Controls.Add(this.textBox9);
@@ -108,7 +110,7 @@ namespace RentBookApp
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(218, 329);
+            this.dataGridView1.Location = new System.Drawing.Point(76, 339);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(584, 150);
             this.dataGridView1.TabIndex = 2;
@@ -328,6 +330,15 @@ namespace RentBookApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Name Of Store";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(720, 349);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,5 +391,6 @@ namespace RentBookApp
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button button2;
     }
 }
