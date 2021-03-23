@@ -13,13 +13,11 @@ namespace RentBookApp
     public partial class MainForm : Form
     {
         String fullname;
-        bool role;
-        public MainForm(String fullname, bool role)
+        public MainForm(String fullname)
         {
             InitializeComponent();
             lbStaff.Text = fullname;
             this.fullname = fullname;
-            this.role = role;
         }
 
         private void button1_Click(object sender, EventArgs e)

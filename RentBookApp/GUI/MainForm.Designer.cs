@@ -33,9 +33,12 @@ namespace RentBookApp
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
             this.tabQuanLi = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
@@ -58,7 +61,6 @@ namespace RentBookApp
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -99,7 +101,9 @@ namespace RentBookApp
             this.tabQuanLi.Controls.Add(this.button3);
             this.tabQuanLi.Controls.Add(this.button2);
             this.tabQuanLi.Controls.Add(this.dataGridView1);
+            this.tabQuanLi.Controls.Add(this.label12);
             this.tabQuanLi.Controls.Add(this.label11);
+            this.tabQuanLi.Controls.Add(this.textBox10);
             this.tabQuanLi.Controls.Add(this.textBox9);
             this.tabQuanLi.Location = new System.Drawing.Point(4, 22);
             this.tabQuanLi.Name = "tabQuanLi";
@@ -109,36 +113,62 @@ namespace RentBookApp
             this.tabQuanLi.Text = "Trang Chu";
             this.tabQuanLi.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(676, 429);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Xóa";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(720, 349);
+            this.button2.Location = new System.Drawing.Point(676, 385);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
+            this.button2.Text = "Thêm";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(76, 339);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 385);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(584, 150);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(58, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Khách Hàng";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(56, 22);
+            this.label11.Location = new System.Drawing.Point(58, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 1;
             this.label11.Text = "Ma Sach";
             // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(127, 27);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(206, 20);
+            this.textBox10.TabIndex = 0;
+            this.textBox10.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(125, 16);
+            this.textBox9.Location = new System.Drawing.Point(127, 74);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(206, 20);
             this.textBox9.TabIndex = 0;
@@ -341,15 +371,6 @@ namespace RentBookApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Name Of Store";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(136, 131);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,5 +425,7 @@ namespace RentBookApp
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
