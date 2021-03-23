@@ -27,15 +27,15 @@ namespace RentBookApp.DAO
             {
                 if (sdr.Read())
                 {
-                    int bookID = sdr.GetInt32(0);
-                    string bookTitle = sdr.GetString(1);
-                    int quantity = sdr.GetInt32(2);
-                    float price = sdr.GetFloat(3);
-                    int typeID = sdr.GetInt32(4);
-                    string author = sdr.GetString(5);
-                    int publishingYear = sdr.GetInt32(6);
-                    string createDate = sdr.GetString(7);
-                    bool status = sdr.GetBoolean(8);
+                    int bookID = (int)sdr["bookID"];
+                    string bookTitle = sdr["bookTitle"].ToString();
+                    int quantity = (int)sdr["quantity"];
+                    float price = float.Parse(sdr["price"].ToString());
+                    int typeID = (int)sdr["typeID"];
+                    string author = sdr["author"].ToString();
+                    int publishingYear = (int)sdr["publishingYear"];
+                    string createDate = sdr["createDate"].ToString();
+                    bool status = (bool)sdr["status"];
 
                     BookDTO dto = new BookDTO
                     {

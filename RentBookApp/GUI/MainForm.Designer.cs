@@ -50,7 +50,6 @@ namespace RentBookApp
             this.searchBook = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCreateBook = new System.Windows.Forms.TabPage();
             this.btnCreateBook = new System.Windows.Forms.Button();
@@ -67,7 +66,12 @@ namespace RentBookApp
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbtensach = new System.Windows.Forms.Label();
+            this.lbloaisach = new System.Windows.Forms.Label();
+            this.lbtacgia = new System.Windows.Forms.Label();
+            this.lbnamxuatban = new System.Windows.Forms.Label();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -107,6 +111,10 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
+            this.tabQuanLi.Controls.Add(this.lbnamxuatban);
+            this.tabQuanLi.Controls.Add(this.lbtacgia);
+            this.tabQuanLi.Controls.Add(this.lbloaisach);
+            this.tabQuanLi.Controls.Add(this.lbtensach);
             this.tabQuanLi.Controls.Add(this.lbBookstatus);
             this.tabQuanLi.Controls.Add(this.btnRemove);
             this.tabQuanLi.Controls.Add(this.btnAdd);
@@ -273,19 +281,6 @@ namespace RentBookApp
             this.tabQuanLiSach.Text = "Quan Li Sach";
             this.tabQuanLiSach.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(385, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Name Of Store";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tpCreateBook);
@@ -435,10 +430,55 @@ namespace RentBookApp
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(385, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Name Of Store";
+            // 
             // error
             // 
             this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.error.ContainerControl = this;
+            // 
+            // lbtensach
+            // 
+            this.lbtensach.AutoSize = true;
+            this.lbtensach.Location = new System.Drawing.Point(156, 128);
+            this.lbtensach.Name = "lbtensach";
+            this.lbtensach.Size = new System.Drawing.Size(0, 13);
+            this.lbtensach.TabIndex = 14;
+            // 
+            // lbloaisach
+            // 
+            this.lbloaisach.AutoSize = true;
+            this.lbloaisach.Location = new System.Drawing.Point(153, 172);
+            this.lbloaisach.Name = "lbloaisach";
+            this.lbloaisach.Size = new System.Drawing.Size(0, 13);
+            this.lbloaisach.TabIndex = 14;
+            // 
+            // lbtacgia
+            // 
+            this.lbtacgia.AutoSize = true;
+            this.lbtacgia.Location = new System.Drawing.Point(153, 214);
+            this.lbtacgia.Name = "lbtacgia";
+            this.lbtacgia.Size = new System.Drawing.Size(0, 13);
+            this.lbtacgia.TabIndex = 14;
+            // 
+            // lbnamxuatban
+            // 
+            this.lbnamxuatban.AutoSize = true;
+            this.lbnamxuatban.Location = new System.Drawing.Point(153, 263);
+            this.lbnamxuatban.Name = "lbnamxuatban";
+            this.lbnamxuatban.Size = new System.Drawing.Size(0, 13);
+            this.lbnamxuatban.TabIndex = 14;
             // 
             // MainForm
             // 
@@ -506,5 +546,9 @@ namespace RentBookApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ErrorProvider error;
+        private System.Windows.Forms.Label lbnamxuatban;
+        private System.Windows.Forms.Label lbtacgia;
+        private System.Windows.Forms.Label lbloaisach;
+        private System.Windows.Forms.Label lbtensach;
     }
 }

@@ -8,6 +8,6 @@ namespace RentBookApp.DAO
 {
     class ConnectString
     {
-        public static string str = @"Data Source=;Initial Catalog=RentBooksApp;Persist Security Info=True;User ID=sa;Password=hanhvu0978";
+        public static string str = @"Data Source=;Initial Catalog=RentBooksApp;Persist Security Info=True;User ID=sa;Password=dat123";
     }
 }

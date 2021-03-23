@@ -28,7 +28,7 @@ namespace RentBookApp
             string phone = cusPhone.Text;
             CustomerDAO dao = new CustomerDAO();
             string result = dao.checkCustomer(phone);
-            if(result != null)
+            if (result != null)
             {
                 lblFullName.Text = result;
             }
@@ -51,11 +51,20 @@ namespace RentBookApp
             string bookId = searchBook.Text;
             BooksDAO dao = new BooksDAO();
             BookDTO dto = dao.findBook(bookId);
-            if(dto != null)
+            if (dto != null)
             {
-                lblBookTitle.Text = "cho anh vu";
-                lblBookTitle.Text = "cho anh vu";
-                lblBookTitle.Text = "cho anh vu";
+                lbtensach.Text = dto.bookTitle;
+                lbloaisach.Text = dto.typeID.ToString();
+                lbtacgia.Text = dto.author;
+                lbnamxuatban.Text = dto.publishingYear.ToString();
+                lbBookstatus.Text = "";
+            }
+            else{
+                lbBookstatus.Text = "Không tìm thấy";
+                lbtensach.Text = "";
+                lbloaisach.Text = "";
+                lbtacgia.Text = "";
+                lbnamxuatban.Text = "";
             }
         }
 
@@ -115,4 +124,5 @@ namespace RentBookApp
             }
             return result;
         }
+    }
 }
