@@ -53,7 +53,6 @@ namespace RentBookApp
             BookDTO dto = dao.findBook(bookId);
             if(dto != null)
             {
-                lblBookTitle += "/t" + dto.; 
             }
         }
 
