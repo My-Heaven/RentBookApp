@@ -54,6 +54,9 @@ namespace RentBookApp
             if(dto != null)
             {
                 lblBookTitle.Text = "cho anh vu";
+                lblBookTitle.Text = "cho anh vu";
+                lblBookTitle.Text = "cho anh vu";
+                lblBookTitle.Text = "cho anh vu";
             }
         }
 
