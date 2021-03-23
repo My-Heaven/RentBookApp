@@ -1,4 +1,5 @@
 ﻿using RentBookApp.DAO;
+using RentBookApp.DTO;
 using RentBookApp.GUI;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,18 @@ namespace RentBookApp
             CreateCustomerForm crf = new CreateCustomerForm(this);
             this.Enabled = false;
             crf.Show();
+        }
+
+        private void searchBook_TextChanged(object sender, EventArgs e)
+        {
+
+            string bookId = searchBook.Text;
+            BooksDAO dao = new BooksDAO();
+            BookDTO dto = dao.findBook(bookId);
+            if(dto != null)
+            {
+
+            }
         }
     }
 }

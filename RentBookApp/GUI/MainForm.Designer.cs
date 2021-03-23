@@ -45,13 +45,14 @@ namespace RentBookApp
             this.lblBookTitle = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cusPhone = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.searchBook = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
+            this.lbBookstatus = new System.Windows.Forms.Label();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -89,6 +90,7 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
+            this.tabQuanLi.Controls.Add(this.lbBookstatus);
             this.tabQuanLi.Controls.Add(this.btnRemove);
             this.tabQuanLi.Controls.Add(this.btnAdd);
             this.tabQuanLi.Controls.Add(this.dgvCart);
@@ -101,7 +103,7 @@ namespace RentBookApp
             this.tabQuanLi.Controls.Add(this.lblBookTitle);
             this.tabQuanLi.Controls.Add(this.label11);
             this.tabQuanLi.Controls.Add(this.cusPhone);
-            this.tabQuanLi.Controls.Add(this.textBox9);
+            this.tabQuanLi.Controls.Add(this.searchBook);
             this.tabQuanLi.Location = new System.Drawing.Point(4, 22);
             this.tabQuanLi.Name = "tabQuanLi";
             this.tabQuanLi.Padding = new System.Windows.Forms.Padding(3);
@@ -167,11 +169,10 @@ namespace RentBookApp
             // 
             this.lblFullName.AutoSize = true;
             this.lblFullName.Enabled = false;
-            this.lblFullName.Location = new System.Drawing.Point(127, 55);
+            this.lblFullName.Location = new System.Drawing.Point(153, 49);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(38, 13);
+            this.lblFullName.Size = new System.Drawing.Size(0, 13);
             this.lblFullName.TabIndex = 6;
-            this.lblFullName.Text = "status:";
             // 
             // btnAddCustomer
             // 
@@ -218,13 +219,13 @@ namespace RentBookApp
             this.cusPhone.TabIndex = 0;
             this.cusPhone.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
-            // textBox9
+            // searchBook
             // 
-            this.textBox9.Location = new System.Drawing.Point(156, 77);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(206, 20);
-            this.textBox9.TabIndex = 0;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.searchBook.Location = new System.Drawing.Point(156, 77);
+            this.searchBook.Name = "searchBook";
+            this.searchBook.Size = new System.Drawing.Size(206, 20);
+            this.searchBook.TabIndex = 0;
+            this.searchBook.TextChanged += new System.EventHandler(this.searchBook_TextChanged);
             // 
             // tabLichSu
             // 
@@ -290,6 +291,14 @@ namespace RentBookApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Name Of Store";
             // 
+            // lbBookstatus
+            // 
+            this.lbBookstatus.AutoSize = true;
+            this.lbBookstatus.Location = new System.Drawing.Point(384, 80);
+            this.lbBookstatus.Name = "lbBookstatus";
+            this.lbBookstatus.Size = new System.Drawing.Size(0, 13);
+            this.lbBookstatus.TabIndex = 13;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,7 +330,7 @@ namespace RentBookApp
         private System.Windows.Forms.TabPage tabQuanLiSach;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox searchBook;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox cusPhone;
         private System.Windows.Forms.Label lblBookTitle;
@@ -336,5 +345,6 @@ namespace RentBookApp
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label lbBookstatus;
     }
 }
