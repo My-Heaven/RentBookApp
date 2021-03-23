@@ -18,9 +18,9 @@ namespace RentBookApp.DAO
             try
             {
                 SqlConnection cnn = new SqlConnection(cs);
-                string SQL = "insert [dbo].[tblCostomers]([Phone],[fullName],[Address]) values(@Phone,@Fullname,@Address)";
+                string SQL = "insert [dbo].[tblCostomers]([Phone],[fullName],[Address],[createDate],[status]) values(@Phone,@Fullname,@Address,getDate(),'true')";
                 SqlCommand cmd = new SqlCommand(SQL, cnn);
-                cmd.Parameters.AddWithValue("@Name", dto.Phone);
+                cmd.Parameters.AddWithValue("@Phone", dto.Phone);
                 cmd.Parameters.AddWithValue("@FullName", dto.Fullname);
                 cmd.Parameters.AddWithValue("@Address", dto.Address);
                 if (cnn.State == ConnectionState.Closed)

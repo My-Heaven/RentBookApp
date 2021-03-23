@@ -40,11 +40,18 @@ namespace RentBookApp.GUI
             {
                 MessageBox.Show("Tạo khách hàng thành công");
                 f.Enabled = true;
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Tạo khách hàng thất bại");
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            f.Enabled = true;
+            this.Close();
         }
     }
 }
