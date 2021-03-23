@@ -56,7 +56,6 @@ namespace RentBookApp
                 lblBookTitle.Text = "cho anh vu";
                 lblBookTitle.Text = "cho anh vu";
                 lblBookTitle.Text = "cho anh vu";
-                lblBookTitle.Text = "cho anh vu";
             }
         }
 
