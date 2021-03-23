@@ -443,6 +443,8 @@ namespace RentBookApp
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabManage.ResumeLayout(false);
             this.tabQuanLi.ResumeLayout(false);
             this.tabQuanLi.PerformLayout();
