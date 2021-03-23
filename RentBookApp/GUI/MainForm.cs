@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentBookApp.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,17 @@ namespace RentBookApp
 
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-            
+            string phone = textBox9.Text;
+            CustomerDAO dao = new CustomerDAO();
+            string result = dao.checkCustomer(phone);
+            if(result != null)
+            {
+                lblFullName.Text = result;
+            }
+            else
+            {
+                lblFullName.Text = "Khách hàng không tồn tại";
+            }
         }
     }
 }

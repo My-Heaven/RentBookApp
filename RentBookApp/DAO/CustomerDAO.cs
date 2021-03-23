@@ -16,7 +16,7 @@ namespace RentBookApp.DAO
         {
 
             SqlConnection cnn = new SqlConnection(cs);
-            string SQL = "insert [dbo].[tblBooks]([BookName],[BookPrice]) values(@Phone,@Fullname)";
+            string SQL = "insert [dbo].[tblCostomers]([Phone],[fullName],[Address]) values(@Phone,@Fullname,@Address)";
             SqlCommand cmd = new SqlCommand(SQL, cnn);
             cmd.Parameters.AddWithValue("@Name", dto.Phone);
             cmd.Parameters.AddWithValue("@FullName", dto.Fullname);
@@ -29,10 +29,25 @@ namespace RentBookApp.DAO
             if (count > 0) return true;
             return false;
         }
-        public bool checkCustomer(string Phone)
+        public string checkCustomer(string Phone)
         {
-
-            return false;
+            SqlConnection cn = new SqlConnection(cs);
+            string SQL = "select [fullName] from[dbo].[tblCostomers] where[Phone] = @phone ";
+            SqlCommand cmd = new SqlCommand(SQL, cn);
+            cmd.Parameters.AddWithValue("@phone",Phone);
+            if (cn.State == ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            SqlDataReader sdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            if (sdr.HasRows)
+            {
+                if (sdr.Read())
+                {
+                    return sdr.GetString(0);
+                }
+            }
+            return null;
         }
 
     }

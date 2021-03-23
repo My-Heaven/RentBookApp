@@ -14,8 +14,6 @@ namespace RentBookApp
 {
     public partial class Form1 : Form
     {
-        String fullname;
-        bool role;
         public Form1()
         {
             InitializeComponent();

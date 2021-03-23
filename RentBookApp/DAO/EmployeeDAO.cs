@@ -13,7 +13,7 @@ namespace RentBookApp.DAO
             try
             {
                 SqlConnection con = new SqlConnection(cs);
-                SqlCommand cmd = new SqlCommand("select [fullname] from[dbo].[tblAccount] where[username] = @username and [password] = @password", con);
+                SqlCommand cmd = new SqlCommand("select [fullName] from tblEmployees where[userName] = @username and [password] = @password", con);
                 cmd.Parameters.AddWithValue("@username", Username);
                 cmd.Parameters.AddWithValue("@password", Password);
                 con.Open();
