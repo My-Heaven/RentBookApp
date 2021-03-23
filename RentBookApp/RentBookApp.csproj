@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ConnectString.cs" />
     <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\EmployeeDAO.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />

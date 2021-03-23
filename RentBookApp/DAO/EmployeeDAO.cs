@@ -7,7 +7,7 @@ namespace RentBookApp.DAO
 {
     public class EmployeeDAO
     {
-        String cs = @"Data Source=TANDAT\SQLEXPRESS;Initial Catalog=RentBooksApp;Persist Security Info=True;User ID=sa;Password=hanhvu0978";
+        String cs = ConnectString.str;
         public string CheckLogin(string Username, string Password)
         {
             try
