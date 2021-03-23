@@ -16,7 +16,7 @@ namespace RentBookApp.DAO
         {
 
             SqlConnection cnn = new SqlConnection(cs);
-            string SQL = "insert [dbo].[tblBooks]([BookName],[BookPrice]) values(@Phone,@Price)";
+            string SQL = "insert [dbo].[tblBooks]([BookName],[BookPrice]) values(@Phone,@Fullname)";
             SqlCommand cmd = new SqlCommand(SQL, cnn);
             cmd.Parameters.AddWithValue("@Name", dto.Phone);
             cmd.Parameters.AddWithValue("@FullName", dto.Fullname);
@@ -27,6 +27,11 @@ namespace RentBookApp.DAO
             }
             int count = cmd.ExecuteNonQuery();
             if (count > 0) return true;
+            return false;
+        }
+        public bool checkCustomer(string Phone)
+        {
+
             return false;
         }
 

@@ -145,9 +145,9 @@ namespace RentBookApp
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(58, 33);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 13);
+            this.label12.Size = new System.Drawing.Size(92, 13);
             this.label12.TabIndex = 1;
-            this.label12.Text = "Khách Hàng";
+            this.label12.Text = "SDT Khách Hàng";
             // 
             // label11
             // 
@@ -160,7 +160,7 @@ namespace RentBookApp
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(127, 27);
+            this.textBox10.Location = new System.Drawing.Point(156, 26);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(206, 20);
             this.textBox10.TabIndex = 0;
@@ -168,7 +168,7 @@ namespace RentBookApp
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(127, 74);
+            this.textBox9.Location = new System.Drawing.Point(156, 77);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(206, 20);
             this.textBox9.TabIndex = 0;
