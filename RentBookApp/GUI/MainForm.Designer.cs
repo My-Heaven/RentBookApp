@@ -33,6 +33,7 @@ namespace RentBookApp
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
             this.tabQuanLi = new System.Windows.Forms.TabPage();
+            this.lbBookstatus = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvCart = new System.Windows.Forms.DataGridView();
@@ -48,16 +49,29 @@ namespace RentBookApp
             this.searchBook = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.lbBookstatus = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpCreateBook = new System.Windows.Forms.TabPage();
+            this.btnCreateBook = new System.Windows.Forms.Button();
+            this.cbxBookType = new System.Windows.Forms.ComboBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtPublishingYear = new System.Windows.Forms.TextBox();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.txtBookTitle = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.tabQuanLiSach.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tpCreateBook.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,6 +125,14 @@ namespace RentBookApp
             this.tabQuanLi.TabIndex = 0;
             this.tabQuanLi.Text = "Trang Chủ";
             this.tabQuanLi.UseVisualStyleBackColor = true;
+            // 
+            // lbBookstatus
+            // 
+            this.lbBookstatus.AutoSize = true;
+            this.lbBookstatus.Location = new System.Drawing.Point(384, 80);
+            this.lbBookstatus.Name = "lbBookstatus";
+            this.lbBookstatus.Size = new System.Drawing.Size(0, 13);
+            this.lbBookstatus.TabIndex = 13;
             // 
             // btnRemove
             // 
@@ -248,36 +270,6 @@ namespace RentBookApp
             this.tabQuanLiSach.Text = "Quan Li Sach";
             this.tabQuanLiSach.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(988, 543);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(980, 517);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(980, 517);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -291,13 +283,154 @@ namespace RentBookApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Name Of Store";
             // 
-            // lbBookstatus
+            // tabControl1
             // 
-            this.lbBookstatus.AutoSize = true;
-            this.lbBookstatus.Location = new System.Drawing.Point(384, 80);
-            this.lbBookstatus.Name = "lbBookstatus";
-            this.lbBookstatus.Size = new System.Drawing.Size(0, 13);
-            this.lbBookstatus.TabIndex = 13;
+            this.tabControl1.Controls.Add(this.tpCreateBook);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(1, 2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(988, 543);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tpCreateBook
+            // 
+            this.tpCreateBook.Controls.Add(this.btnCreateBook);
+            this.tpCreateBook.Controls.Add(this.cbxBookType);
+            this.tpCreateBook.Controls.Add(this.txtPrice);
+            this.tpCreateBook.Controls.Add(this.txtQuantity);
+            this.tpCreateBook.Controls.Add(this.txtPublishingYear);
+            this.tpCreateBook.Controls.Add(this.txtAuthor);
+            this.tpCreateBook.Controls.Add(this.txtBookTitle);
+            this.tpCreateBook.Controls.Add(this.label8);
+            this.tpCreateBook.Controls.Add(this.label7);
+            this.tpCreateBook.Controls.Add(this.label6);
+            this.tpCreateBook.Controls.Add(this.label5);
+            this.tpCreateBook.Controls.Add(this.label4);
+            this.tpCreateBook.Controls.Add(this.label3);
+            this.tpCreateBook.Location = new System.Drawing.Point(4, 22);
+            this.tpCreateBook.Name = "tpCreateBook";
+            this.tpCreateBook.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCreateBook.Size = new System.Drawing.Size(980, 517);
+            this.tpCreateBook.TabIndex = 0;
+            this.tpCreateBook.Text = "Thêm Sách";
+            this.tpCreateBook.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateBook
+            // 
+            this.btnCreateBook.Location = new System.Drawing.Point(449, 387);
+            this.btnCreateBook.Name = "btnCreateBook";
+            this.btnCreateBook.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateBook.TabIndex = 3;
+            this.btnCreateBook.Text = "Create";
+            this.btnCreateBook.UseVisualStyleBackColor = true;
+            // 
+            // cbxBookType
+            // 
+            this.cbxBookType.FormattingEnabled = true;
+            this.cbxBookType.Location = new System.Drawing.Point(399, 192);
+            this.cbxBookType.Name = "cbxBookType";
+            this.cbxBookType.Size = new System.Drawing.Size(232, 21);
+            this.cbxBookType.TabIndex = 2;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(399, 308);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(232, 20);
+            this.txtPrice.TabIndex = 1;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(399, 269);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(232, 20);
+            this.txtQuantity.TabIndex = 1;
+            // 
+            // txtPublishingYear
+            // 
+            this.txtPublishingYear.Location = new System.Drawing.Point(399, 230);
+            this.txtPublishingYear.Name = "txtPublishingYear";
+            this.txtPublishingYear.Size = new System.Drawing.Size(232, 20);
+            this.txtPublishingYear.TabIndex = 1;
+            // 
+            // txtAuthor
+            // 
+            this.txtAuthor.Location = new System.Drawing.Point(399, 154);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(232, 20);
+            this.txtAuthor.TabIndex = 1;
+            // 
+            // txtBookTitle
+            // 
+            this.txtBookTitle.Location = new System.Drawing.Point(399, 115);
+            this.txtBookTitle.Name = "txtBookTitle";
+            this.txtBookTitle.Size = new System.Drawing.Size(232, 20);
+            this.txtBookTitle.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(239, 308);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Giá";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(239, 269);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Số Lượng";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(239, 230);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Nắm Xuất Bản";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(239, 192);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Loại sách";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(239, 154);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Tác Giả";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(239, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Tên Sách";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(980, 517);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -316,6 +449,8 @@ namespace RentBookApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.tabQuanLiSach.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tpCreateBook.ResumeLayout(false);
+            this.tpCreateBook.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,9 +477,22 @@ namespace RentBookApp
         private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblPublishingYear;
         private System.Windows.Forms.Label lblAuthor;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label lbBookstatus;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpCreateBook;
+        private System.Windows.Forms.Button btnCreateBook;
+        private System.Windows.Forms.ComboBox cbxBookType;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtPublishingYear;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.TextBox txtBookTitle;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
