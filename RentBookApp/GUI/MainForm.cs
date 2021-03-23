@@ -53,6 +53,7 @@ namespace RentBookApp
             BookDTO dto = dao.findBook(bookId);
             if(dto != null)
             {
+                lblBookTitle.Text = "cho anh vu";
             }
         }
 
