@@ -11,7 +11,7 @@ namespace RentBookApp.DAO
 {
     public class CustomerDAO
     {
-        String cs = @"Data Source=TANDAT\SQLEXPRESS;Initial Catalog=RentBooksApp;Persist Security Info=True;User ID=sa;Password=dat123";
+        String cs = @"Data Source=TANDAT\SQLEXPRESS;Initial Catalog=RentBooksApp;Persist Security Info=True;User ID=sa;Password=hanhvu0978";
         public bool CreateCustomer(CustomerDTO dto)
         {
 
