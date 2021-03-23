@@ -1,4 +1,5 @@
 ﻿using RentBookApp.DAO;
+using RentBookApp.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,22 @@ namespace RentBookApp.GUI
         private void btnCreate_Click(object sender, EventArgs e)
         {
             CustomerDAO dao = new CustomerDAO();
-            bool result = dao.CreateCustomer(txtPhone.Text, txtFullname.Text, txtAddress.Text);
+            CustomerDTO dto = new CustomerDTO
+            {
+                Phone = txtPhone.Text,
+                Fullname = txtFullname.Text,
+                Address = txtAddress.Text
+            };
+            bool result = dao.CreateCustomer(dto);
+            if(result == true)
+            {
+                MessageBox.Show("Tạo khách hàng thành công");
+                f.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Tạo khách hàng thất bại");
+            }
         }
     }
 }
