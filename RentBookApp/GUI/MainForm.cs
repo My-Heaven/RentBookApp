@@ -15,6 +15,7 @@ namespace RentBookApp
 {
     public partial class MainForm : Form
     {
+        List<BookTypeDTO> bookTypes = null;
         String fullname;
         public MainForm(String fullname)
         {
@@ -58,6 +59,10 @@ namespace RentBookApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            bookTypes = BookTypeDAO.getBookTypes();
+            cbxBookType.DisplayMember = "typeName";
+            cbxBookType.ValueMember = "typeID";
+            cbxBookType.DataSource = bookTypes;
 
         }
 

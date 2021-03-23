@@ -11,8 +11,8 @@ namespace RentBookApp.DAO
 {
     public class BookTypeDAO
     {
-        string strConnection = ConnectString.str;
-        public List<BookTypeDTO> getBookTypes()
+        public static string strConnection = ConnectString.str;
+        public static List<BookTypeDTO> getBookTypes()
         {
             List<BookTypeDTO> list = null;
             SqlConnection cnn = new SqlConnection(strConnection);
