@@ -33,8 +33,8 @@ namespace RentBookApp
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
             this.tabQuanLi = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,6 +61,10 @@ namespace RentBookApp
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtBookTitle = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,9 +77,9 @@ namespace RentBookApp
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(745, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Nhan Vien :";
+            this.label1.Text = "Nhân Viên:";
             // 
             // lbStaff
             // 
@@ -98,38 +102,42 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
-            this.tabQuanLi.Controls.Add(this.button3);
+            this.tabQuanLi.Controls.Add(this.lblFullName);
             this.tabQuanLi.Controls.Add(this.button2);
+            this.tabQuanLi.Controls.Add(this.btnRemove);
+            this.tabQuanLi.Controls.Add(this.btnAdd);
             this.tabQuanLi.Controls.Add(this.dataGridView1);
             this.tabQuanLi.Controls.Add(this.label12);
+            this.tabQuanLi.Controls.Add(this.label13);
             this.tabQuanLi.Controls.Add(this.label11);
             this.tabQuanLi.Controls.Add(this.textBox10);
+            this.tabQuanLi.Controls.Add(this.txtBookTitle);
             this.tabQuanLi.Controls.Add(this.textBox9);
             this.tabQuanLi.Location = new System.Drawing.Point(4, 22);
             this.tabQuanLi.Name = "tabQuanLi";
             this.tabQuanLi.Padding = new System.Windows.Forms.Padding(3);
             this.tabQuanLi.Size = new System.Drawing.Size(991, 546);
             this.tabQuanLi.TabIndex = 0;
-            this.tabQuanLi.Text = "Trang Chu";
+            this.tabQuanLi.Text = "Trang Chủ";
             this.tabQuanLi.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnRemove
             // 
-            this.button3.Location = new System.Drawing.Point(676, 429);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(676, 429);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 4;
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAdd
             // 
-            this.button2.Location = new System.Drawing.Point(676, 385);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Thêm";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(676, 385);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -156,7 +164,7 @@ namespace RentBookApp
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Ma Sach";
+            this.label11.Text = "Mã Sách";
             // 
             // textBox10
             // 
@@ -181,7 +189,7 @@ namespace RentBookApp
             this.tabLichSu.Padding = new System.Windows.Forms.Padding(3);
             this.tabLichSu.Size = new System.Drawing.Size(991, 546);
             this.tabLichSu.TabIndex = 1;
-            this.tabLichSu.Text = "Lich Su";
+            this.tabLichSu.Text = "Lịch sử";
             this.tabLichSu.UseVisualStyleBackColor = true;
             // 
             // tabQuanLiSach
@@ -371,6 +379,42 @@ namespace RentBookApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Name Of Store";
             // 
+            // txtBookTitle
+            // 
+            this.txtBookTitle.Location = new System.Drawing.Point(127, 123);
+            this.txtBookTitle.Name = "txtBookTitle";
+            this.txtBookTitle.Size = new System.Drawing.Size(206, 20);
+            this.txtBookTitle.TabIndex = 0;
+            this.txtBookTitle.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(58, 129);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Tên Sách";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(384, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(139, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Khách hàng mới";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Location = new System.Drawing.Point(127, 55);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(38, 13);
+            this.lblFullName.TabIndex = 6;
+            this.lblFullName.Text = "status:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -423,9 +467,13 @@ namespace RentBookApp
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtBookTitle;
+        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Button button2;
     }
 }
