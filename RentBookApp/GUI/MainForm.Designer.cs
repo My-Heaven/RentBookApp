@@ -29,6 +29,7 @@ namespace RentBookApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
@@ -66,12 +67,14 @@ namespace RentBookApp
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.tabQuanLiSach.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpCreateBook.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -432,6 +435,11 @@ namespace RentBookApp
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // error
+            // 
+            this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.error.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -453,6 +461,7 @@ namespace RentBookApp
             this.tabControl1.ResumeLayout(false);
             this.tpCreateBook.ResumeLayout(false);
             this.tpCreateBook.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,5 +505,6 @@ namespace RentBookApp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }

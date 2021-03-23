@@ -72,5 +72,47 @@ namespace RentBookApp
         {
             System.Environment.Exit(0);
         }
-    }
+        bool checkBook()
+        {
+            bool result = true;
+            string bookTitle = txtBookTitle.Text.Trim();
+            if (string.IsNullOrEmpty(bookTitle))
+            {
+                result = false;
+                error.SetError(txtBookTitle, "Nhập tên sách!!!!");
+            }
+            else
+            {
+                if (bookTitle.Length > 100)
+                {
+                    result = false;
+                    error.SetError(txtBookTitle, "<= 100 ký tự!!!!");
+                }
+            }
+            BookTypeDTO type = (BookTypeDTO)cbxBookType.SelectedItem;
+            string bookType = type.typeID;
+            string author = txtAuthor.Text.Trim();
+            if (string.IsNullOrEmpty(author))
+            {
+                result = false;
+                error.SetError(txtAuthor, "Nhập Tác Giả!!!!");
+            }
+            else
+            {
+                if (author.Length > 100)
+                {
+                    result = false;
+                    error.SetError(txtAuthor, "<=100 ký tự!!!!");
+                }
+            }
+            try
+            {
+            }
+            catch (FormatException fe)
+            {
+                result = false;
+                error.SetError(txtQuantity, "<=100 ký tự!!!!");
+            }
+            return result;
+        }
 }
