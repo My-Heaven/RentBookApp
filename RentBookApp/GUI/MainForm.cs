@@ -1,4 +1,5 @@
 ﻿using RentBookApp.DAO;
+using RentBookApp.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace RentBookApp
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
-            string phone = textBox9.Text;
+            string phone = cusPhone.Text;
             CustomerDAO dao = new CustomerDAO();
             string result = dao.checkCustomer(phone);
             if(result != null)
@@ -33,6 +34,13 @@ namespace RentBookApp
             {
                 lblFullName.Text = "Khách hàng không tồn tại";
             }
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            CreateCustomerForm crf = new CreateCustomerForm(this);
+            this.Enabled = false;
+            crf.Show();
         }
     }
 }

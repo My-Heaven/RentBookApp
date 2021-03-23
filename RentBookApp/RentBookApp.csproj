@@ -50,6 +50,12 @@
     <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\EmployeeDAO.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="GUI\CreateCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CreateCustomerForm.Designer.cs">
+      <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\CreateCustomerForm.resx">
+      <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
