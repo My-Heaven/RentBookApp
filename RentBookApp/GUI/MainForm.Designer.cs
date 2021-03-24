@@ -34,6 +34,10 @@ namespace RentBookApp
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
             this.tabQuanLi = new System.Windows.Forms.TabPage();
+            this.lbnamxuatban = new System.Windows.Forms.Label();
+            this.lbtacgia = new System.Windows.Forms.Label();
+            this.lbloaisach = new System.Windows.Forms.Label();
+            this.lbtensach = new System.Windows.Forms.Label();
             this.lbBookstatus = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -68,10 +72,6 @@ namespace RentBookApp
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lbtensach = new System.Windows.Forms.Label();
-            this.lbloaisach = new System.Windows.Forms.Label();
-            this.lbtacgia = new System.Windows.Forms.Label();
-            this.lbnamxuatban = new System.Windows.Forms.Label();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -136,6 +136,38 @@ namespace RentBookApp
             this.tabQuanLi.TabIndex = 0;
             this.tabQuanLi.Text = "Trang Chủ";
             this.tabQuanLi.UseVisualStyleBackColor = true;
+            // 
+            // lbnamxuatban
+            // 
+            this.lbnamxuatban.AutoSize = true;
+            this.lbnamxuatban.Location = new System.Drawing.Point(153, 263);
+            this.lbnamxuatban.Name = "lbnamxuatban";
+            this.lbnamxuatban.Size = new System.Drawing.Size(0, 13);
+            this.lbnamxuatban.TabIndex = 14;
+            // 
+            // lbtacgia
+            // 
+            this.lbtacgia.AutoSize = true;
+            this.lbtacgia.Location = new System.Drawing.Point(153, 214);
+            this.lbtacgia.Name = "lbtacgia";
+            this.lbtacgia.Size = new System.Drawing.Size(0, 13);
+            this.lbtacgia.TabIndex = 14;
+            // 
+            // lbloaisach
+            // 
+            this.lbloaisach.AutoSize = true;
+            this.lbloaisach.Location = new System.Drawing.Point(153, 172);
+            this.lbloaisach.Name = "lbloaisach";
+            this.lbloaisach.Size = new System.Drawing.Size(0, 13);
+            this.lbloaisach.TabIndex = 14;
+            // 
+            // lbtensach
+            // 
+            this.lbtensach.AutoSize = true;
+            this.lbtensach.Location = new System.Drawing.Point(156, 128);
+            this.lbtensach.Name = "lbtensach";
+            this.lbtensach.Size = new System.Drawing.Size(0, 13);
+            this.lbtensach.TabIndex = 14;
             // 
             // lbBookstatus
             // 
@@ -322,6 +354,7 @@ namespace RentBookApp
             this.btnCreateBook.TabIndex = 3;
             this.btnCreateBook.Text = "Create";
             this.btnCreateBook.UseVisualStyleBackColor = true;
+            this.btnCreateBook.Click += new System.EventHandler(this.btnCreateBook_Click);
             // 
             // cbxBookType
             // 
@@ -447,38 +480,6 @@ namespace RentBookApp
             // 
             this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.error.ContainerControl = this;
-            // 
-            // lbtensach
-            // 
-            this.lbtensach.AutoSize = true;
-            this.lbtensach.Location = new System.Drawing.Point(156, 128);
-            this.lbtensach.Name = "lbtensach";
-            this.lbtensach.Size = new System.Drawing.Size(0, 13);
-            this.lbtensach.TabIndex = 14;
-            // 
-            // lbloaisach
-            // 
-            this.lbloaisach.AutoSize = true;
-            this.lbloaisach.Location = new System.Drawing.Point(153, 172);
-            this.lbloaisach.Name = "lbloaisach";
-            this.lbloaisach.Size = new System.Drawing.Size(0, 13);
-            this.lbloaisach.TabIndex = 14;
-            // 
-            // lbtacgia
-            // 
-            this.lbtacgia.AutoSize = true;
-            this.lbtacgia.Location = new System.Drawing.Point(153, 214);
-            this.lbtacgia.Name = "lbtacgia";
-            this.lbtacgia.Size = new System.Drawing.Size(0, 13);
-            this.lbtacgia.TabIndex = 14;
-            // 
-            // lbnamxuatban
-            // 
-            this.lbnamxuatban.AutoSize = true;
-            this.lbnamxuatban.Location = new System.Drawing.Point(153, 263);
-            this.lbnamxuatban.Name = "lbnamxuatban";
-            this.lbnamxuatban.Size = new System.Drawing.Size(0, 13);
-            this.lbnamxuatban.TabIndex = 14;
             // 
             // MainForm
             // 

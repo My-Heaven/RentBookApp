@@ -124,5 +124,40 @@ namespace RentBookApp
             }
             return result;
         }
+
+        private void btnCreateBook_Click(object sender, EventArgs e)
+        {
+            bool check = true;
+            string bookTitle = txtBookTitle.Text.Trim();
+            if (string.IsNullOrEmpty(bookTitle))
+            {
+                check = false;
+                error.SetError(txtBookTitle, "Nhận tên sách");
+            }
+            else
+            {
+                if (bookTitle.Length > 100)
+                {
+                    check = false;
+                    error.SetError(txtBookTitle, "<=100 ký tự");
+                }
+            }
+            string author = txtAuthor.Text.Trim();
+            if (string.IsNullOrEmpty(author))
+            {
+                check = false;
+                error.SetError(txtAuthor, "Nhận tên tác giả");
+            }
+            else
+            {
+                if (author.Length > 100)
+                {
+                    check = false;
+                    error.SetError(txtAuthor, "<=100 ký tự");
+                }
+            }
+            int typeID = (int)cbxBookType.SelectedItem;
+            MessageBox.Show(typeID.ToString());
+        }
     }
 }
