@@ -8,10 +8,10 @@ namespace RentBookApp.DTO
 {
     public class BookTypeDTO
     {
-        public string typeID { get; set; }
+        public int typeID { get; set; }
         public string typeName { get; set; }
 
-        public BookTypeDTO(string typeID, string typeName)
+        public BookTypeDTO(int typeID, string typeName)
         {
             this.typeID = typeID;
             this.typeName = typeName;

@@ -156,8 +156,54 @@ namespace RentBookApp
                     error.SetError(txtAuthor, "<=100 ký tự");
                 }
             }
-            int typeID = (int)cbxBookType.SelectedItem;
-            MessageBox.Show(typeID.ToString());
+            string typeID = (string)cbxBookType.SelectedValue;
+            int publishingYear = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtPublishingYear.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtPublishingYear, "Nhập năm xuất bản");
+                }
+                publishingYear = int.Parse(txtPublishingYear.Text.Trim());
+                if (publishingYear < 1500)
+                {
+                    check = false;
+                    error.SetError(txtPublishingYear, ">=1500");
+                }
+            }catch(FormatException fe)
+            {
+                check = false;
+                error.SetError(txtPublishingYear, "Nhập số");
+            }
+            int quantity = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtQuantity.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtQuantity, "Nhập Số lượng");
+                }
+                quantity = int.Parse(txtQuantity.Text.Trim());
+                if (quantity <= 0)
+                {
+                    check = false;
+                    error.SetError(txtQuantity, ">0");
+                }
+            }
+            catch (FormatException fe)
+            {
+                check = false;
+                error.SetError(txtQuantity, "Nhập số");
+            }
+            BookDTO book = new BookDTO
+            {
+                bookTitle = bookTitle,
+                author=author,
+                typeID=typeID,
+                publishingYear=publishingYear,
+
+            }
         }
     }
 }

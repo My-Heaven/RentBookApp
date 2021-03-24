@@ -27,7 +27,7 @@ namespace RentBookApp.DAO
             {
                 while (reader.Read())
                 {
-                    string typeID = (string)reader["typeID"].ToString();
+                    int typeID = (int)reader["typeID"];
                     string typeName = (string)reader["typeName"];
                     BookTypeDTO type = new BookTypeDTO(typeID, typeName);
                     if (list == null)
