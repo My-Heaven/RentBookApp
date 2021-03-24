@@ -54,7 +54,12 @@ namespace RentBookApp
             if (dto != null)
             {
                 lbtensach.Text = dto.bookTitle;
-                lbloaisach.Text = dto.typeID.ToString();
+                foreach(BookTypeDTO type in bookTypes){
+                    if(type.typeID== dto.typeID)
+                    {
+                        lbloaisach.Text = type.typeName;
+                    }
+                }
                 lbtacgia.Text = dto.author;
                 lbnamxuatban.Text = dto.publishingYear.ToString();
                 lbBookstatus.Text = "";
@@ -99,7 +104,7 @@ namespace RentBookApp
                 }
             }
             BookTypeDTO type = (BookTypeDTO)cbxBookType.SelectedItem;
-            string bookType = type.typeID;
+            int bookType = type.typeID;
             string author = txtAuthor.Text.Trim();
             if (string.IsNullOrEmpty(author))
             {
@@ -156,7 +161,7 @@ namespace RentBookApp
                     error.SetError(txtAuthor, "<=100 ký tự");
                 }
             }
-            string typeID = (string)cbxBookType.SelectedValue;
+            int typeID = (int)cbxBookType.SelectedValue;
             int publishingYear = 0;
             try
             {
@@ -196,13 +201,61 @@ namespace RentBookApp
                 check = false;
                 error.SetError(txtQuantity, "Nhập số");
             }
+            float price = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtPrice.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtPrice, "Nhập giá");
+                }
+                price = float.Parse(txtPrice.Text.Trim());
+                if (price <= 0)
+                {
+                    check = false;
+                    error.SetError(txtPrice, ">0");
+                }
+            }
+            catch (FormatException fe)
+            {
+                check = false;
+                error.SetError(txtPrice, "Nhập số");
+            }
             BookDTO book = new BookDTO
             {
                 bookTitle = bookTitle,
-                author=author,
-                typeID=typeID,
-                publishingYear=publishingYear,
+                author = author,
+                typeID = typeID,
+                publishingYear = publishingYear,
+                price=price,
+                quantity=quantity,
+                status=true
 
+            };
+            if (check)
+            {
+                try
+                {
+                    BooksDAO dao = new BooksDAO();
+                    check = dao.addNewBook(book);
+                }catch(Exception ex)
+                {
+                    check = false;
+                    MessageBox.Show("ex");
+                }
+                if (check)
+                {
+                    MessageBox.Show("Thêm thành công");
+                    txtAuthor.Text = string.Empty;
+                    txtBookTitle.Text = string.Empty;
+                    txtPrice.Text = string.Empty;
+                    txtPublishingYear.Text = string.Empty;
+                    txtQuantity.Text = string.Empty;
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
             }
         }
     }
