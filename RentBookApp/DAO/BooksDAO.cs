@@ -86,5 +86,38 @@ namespace RentBookApp.DAO
             }
             return result;
         }
+        public bool updateBook(BookDTO book)
+        {
+            bool result = false;
+            SqlConnection cnn = new SqlConnection(cs);
+            string sql = "update tblBooks " +
+                "set bookTitle=@bookTitle,author=author,price=@price,publishingYear=@publishingYear,quantity=@quantity,typeID=@typeID " +
+                "where bookID=@bookID";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@bookTitle", book.bookTitle);
+            cmd.Parameters.AddWithValue("@quantity", book.quantity);
+            cmd.Parameters.AddWithValue("@price", book.price);
+            cmd.Parameters.AddWithValue("@typeID", book.typeID);
+            cmd.Parameters.AddWithValue("@author", book.author);
+            cmd.Parameters.AddWithValue("@publishingYear", book.publishingYear);
+            cmd.Parameters.AddWithValue("@status", book.status);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return result;
+        }
     }
 }
