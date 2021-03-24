@@ -17,11 +17,31 @@ namespace RentBookApp
     {
         List<BookTypeDTO> bookTypes = null;
         String fullname;
+        List<BookDTO> listBooks;
+        DataTable dtBooks;
         public MainForm(String fullname)
         {
             InitializeComponent();
             lbStaff.Text = fullname;
             this.fullname = fullname;
+            loadData();
+        }
+        void loadData()
+        {
+            dtBooks = new DataTable();
+            dtBooks.Columns.Add("Tên sách", typeof(string));
+            dtBooks.Columns.Add("Loại sách", typeof(int));
+            dtBooks.Columns.Add("Tác giả", typeof(string));
+            dtBooks.Columns.Add("Năm xuất bản", typeof(int));
+            if (listBooks != null)
+            {
+                for (int i = 0; i < this.listBooks.Count; i++)
+                {
+                    dtBooks.Rows.Add(this.listBooks[i].bookTitle, this.listBooks[i].typeID, this.listBooks[i].author, this.listBooks[i].publishingYear);
+                }
+            }
+            dgvCart.DataSource = dtBooks;
+            dgvCart.AutoResizeColumns();
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
@@ -75,6 +95,7 @@ namespace RentBookApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            loadData();
             bookTypes = BookTypeDAO.getBookTypes();
             cbxBookType.DisplayMember = "typeName";
             cbxBookType.ValueMember = "typeID";
@@ -256,6 +277,39 @@ namespace RentBookApp
                 {
                     MessageBox.Show("Thêm thất bại");
                 }
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cusPhone.Text))
+            {
+                MessageBox.Show("Nhập khách hàng");
+                return;
+            }
+            BooksDAO dao = new BooksDAO();
+            BookDTO dto = dao.findBook(searchBook.Text);
+            if (this.listBooks == null)
+            {
+                this.listBooks = new List<BookDTO>();
+            }
+            if (dto != null)
+            {
+                foreach (BookDTO book in listBooks)
+                {
+                    if (dto.bookID == book.bookID)
+                    {
+                        MessageBox.Show("Sách này đã được thêm, vui lòng thêm sách khác");
+                        return;
+                    }
+                }
+                listBooks.Add(dto);
+                MessageBox.Show("Thêm sách thành công");
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("Chọn sách để thêm");
             }
         }
     }

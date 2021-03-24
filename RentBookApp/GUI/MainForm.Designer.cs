@@ -54,8 +54,6 @@ namespace RentBookApp
             this.searchBook = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnCreateBook = new System.Windows.Forms.Button();
             this.cbxBookType = new System.Windows.Forms.ComboBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -69,6 +67,8 @@ namespace RentBookApp
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -189,12 +189,16 @@ namespace RentBookApp
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvCart
             // 
+            this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.Location = new System.Drawing.Point(62, 320);
+            this.dgvCart.MultiSelect = false;
             this.dgvCart.Name = "dgvCart";
+            this.dgvCart.ReadOnly = true;
             this.dgvCart.Size = new System.Drawing.Size(584, 150);
             this.dgvCart.TabIndex = 10;
             // 
@@ -320,24 +324,6 @@ namespace RentBookApp
             this.tabQuanLiSach.Text = "Quản lý sách";
             this.tabQuanLiSach.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(385, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Name Of Store";
-            // 
-            // error
-            // 
-            this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.error.ContainerControl = this;
-            // 
             // btnCreateBook
             // 
             this.btnCreateBook.Location = new System.Drawing.Point(460, 388);
@@ -443,6 +429,24 @@ namespace RentBookApp
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Tên Sách";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(385, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Name Of Store";
+            // 
+            // error
+            // 
+            this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.error.ContainerControl = this;
             // 
             // MainForm
             // 
