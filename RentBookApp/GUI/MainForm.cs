@@ -21,7 +21,9 @@ namespace RentBookApp
         List<BookDTO> listBooks;
         DataTable dtBooks;
         int TongSoNgay;
-
+        bool saveForAdd = true;
+        DataTable books;
+        Form1 f1;
         public MainForm(String fullname , String txtUsername)
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace RentBookApp
             this.txtUsername = txtUsername;
             txtRentDate.Text = DateTime.Now.ToShortDateString();
             loadData();
+            loadDgvBooks();
         }
         void loadData()
         {
@@ -47,6 +50,14 @@ namespace RentBookApp
             }
             dgvCart.DataSource = dtBooks;
             dgvCart.AutoResizeColumns();
+
+            
+        }
+        void loadDgvBooks()
+        {
+            BooksDAO dao = new BooksDAO();
+            books = dao.getBook(string.Empty);
+            dgvBooks.DataSource = books;
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
@@ -107,184 +118,7 @@ namespace RentBookApp
             cbxBookType.DataSource = bookTypes;
 
         }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            System.Environment.Exit(0);
-        }
-        bool checkBook()
-        {
-            bool result = true;
-            string bookTitle = txtBookTitle.Text.Trim();
-            if (string.IsNullOrEmpty(bookTitle))
-            {
-                result = false;
-                error.SetError(txtBookTitle, "Nhập tên sách!!!!");
-            }
-            else
-            {
-                if (bookTitle.Length > 100)
-                {
-                    result = false;
-                    error.SetError(txtBookTitle, "<= 100 ký tự!!!!");
-                }
-            }
-            BookTypeDTO type = (BookTypeDTO)cbxBookType.SelectedItem;
-            int bookType = type.typeID;
-            string author = txtAuthor.Text.Trim();
-            if (string.IsNullOrEmpty(author))
-            {
-                result = false;
-                error.SetError(txtAuthor, "Nhập Tác Giả!!!!");
-            }
-            else
-            {
-                if (author.Length > 100)
-                {
-                    result = false;
-                    error.SetError(txtAuthor, "<=100 ký tự!!!!");
-                }
-            }
-            try
-            {
-            }
-            catch (FormatException fe)
-            {
-                result = false;
-                error.SetError(txtQuantity, "<=100 ký tự!!!!");
-            }
-            return result;
-        }
-
-        private void btnCreateBook_Click(object sender, EventArgs e)
-        {
-            bool check = true;
-            string bookTitle = txtBookTitle.Text.Trim();
-            if (string.IsNullOrEmpty(bookTitle))
-            {
-                check = false;
-                error.SetError(txtBookTitle, "Nhận tên sách");
-            }
-            else
-            {
-                if (bookTitle.Length > 100)
-                {
-                    check = false;
-                    error.SetError(txtBookTitle, "<=100 ký tự");
-                }
-            }
-            string author = txtAuthor.Text.Trim();
-            if (string.IsNullOrEmpty(author))
-            {
-                check = false;
-                error.SetError(txtAuthor, "Nhận tên tác giả");
-            }
-            else
-            {
-                if (author.Length > 100)
-                {
-                    check = false;
-                    error.SetError(txtAuthor, "<=100 ký tự");
-                }
-            }
-            int typeID = (int)cbxBookType.SelectedValue;
-            int publishingYear = 0;
-            try
-            {
-                if (string.IsNullOrEmpty(txtPublishingYear.Text.Trim()))
-                {
-                    check = false;
-                    error.SetError(txtPublishingYear, "Nhập năm xuất bản");
-                }
-                publishingYear = int.Parse(txtPublishingYear.Text.Trim());
-                if (publishingYear < 1500)
-                {
-                    check = false;
-                    error.SetError(txtPublishingYear, ">=1500");
-                }
-            }catch(FormatException fe)
-            {
-                check = false;
-                error.SetError(txtPublishingYear, "Nhập số");
-            }
-            int quantity = 0;
-            try
-            {
-                if (string.IsNullOrEmpty(txtQuantity.Text.Trim()))
-                {
-                    check = false;
-                    error.SetError(txtQuantity, "Nhập Số lượng");
-                }
-                quantity = int.Parse(txtQuantity.Text.Trim());
-                if (quantity <= 0)
-                {
-                    check = false;
-                    error.SetError(txtQuantity, ">0");
-                }
-            }
-            catch (FormatException fe)
-            {
-                check = false;
-                error.SetError(txtQuantity, "Nhập số");
-            }
-            float price = 0;
-            try
-            {
-                if (string.IsNullOrEmpty(txtPrice.Text.Trim()))
-                {
-                    check = false;
-                    error.SetError(txtPrice, "Nhập giá");
-                }
-                price = float.Parse(txtPrice.Text.Trim());
-                if (price <= 0)
-                {
-                    check = false;
-                    error.SetError(txtPrice, ">0");
-                }
-            }
-            catch (FormatException fe)
-            {
-                check = false;
-                error.SetError(txtPrice, "Nhập số");
-            }
-            BookDTO book = new BookDTO
-            {
-                bookTitle = bookTitle,
-                author = author,
-                typeID = typeID,
-                publishingYear = publishingYear,
-                price=price,
-                quantity=quantity,
-                status=true
-
-            };
-            if (check)
-            {
-                try
-                {
-                    BooksDAO dao = new BooksDAO();
-                    check = dao.addNewBook(book);
-                }catch(Exception ex)
-                {
-                    check = false;
-                    MessageBox.Show("ex");
-                }
-                if (check)
-                {
-                    MessageBox.Show("Thêm thành công");
-                    txtAuthor.Text = string.Empty;
-                    txtBookTitle.Text = string.Empty;
-                    txtPrice.Text = string.Empty;
-                    txtPublishingYear.Text = string.Empty;
-                    txtQuantity.Text = string.Empty;
-                }
-                else
-                {
-                    MessageBox.Show("Thêm thất bại");
-                }
-            }
-        }
-
+        
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cusPhone.Text))
@@ -451,6 +285,230 @@ namespace RentBookApp
                     MessageBox.Show("Thất bại");
                 }
             }
+        }
+
+        void emptyTxt()
+        {
+            txtBookID.Text = string.Empty;
+            txtAuthor.Text = string.Empty;
+            txtBookTitle.Text = string.Empty;
+            txtPrice.Text = string.Empty;
+            txtPublishingYear.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            bool check = true;
+            string bookTitle = txtBookTitle.Text.Trim();
+            if (string.IsNullOrEmpty(bookTitle))
+            {
+                check = false;
+                error.SetError(txtBookTitle, "Nhận tên sách");
+            }
+            else
+            {
+                if (bookTitle.Length > 100)
+                {
+                    check = false;
+                    error.SetError(txtBookTitle, "<=100 ký tự");
+                }
+            }
+            string author = txtAuthor.Text.Trim();
+            if (string.IsNullOrEmpty(author))
+            {
+                check = false;
+                error.SetError(txtAuthor, "Nhận tên tác giả");
+            }
+            else
+            {
+                if (author.Length > 100)
+                {
+                    check = false;
+                    error.SetError(txtAuthor, "<=100 ký tự");
+                }
+            }
+            int typeID = (int)cbxBookType.SelectedValue;
+            int publishingYear = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtPublishingYear.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtPublishingYear, "Nhập năm xuất bản");
+                }
+                publishingYear = int.Parse(txtPublishingYear.Text.Trim());
+                if (publishingYear < 1500)
+                {
+                    check = false;
+                    error.SetError(txtPublishingYear, ">=1500");
+                }
+            }
+            catch (FormatException fe)
+            {
+                check = false;
+                error.SetError(txtPublishingYear, "Nhập số");
+            }
+            int quantity = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtQuantity.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtQuantity, "Nhập Số lượng");
+                }
+                quantity = int.Parse(txtQuantity.Text.Trim());
+                if (quantity <= 0)
+                {
+                    check = false;
+                    error.SetError(txtQuantity, ">0");
+                }
+            }
+            catch (FormatException fe)
+            {
+                check = false;
+                error.SetError(txtQuantity, "Nhập số");
+            }
+            float price = 0;
+            try
+            {
+                if (string.IsNullOrEmpty(txtPrice.Text.Trim()))
+                {
+                    check = false;
+                    error.SetError(txtPrice, "Nhập giá");
+                }
+                price = float.Parse(txtPrice.Text.Trim());
+                if (price <= 0)
+                {
+                    check = false;
+                    error.SetError(txtPrice, ">0");
+                }
+            }
+            catch (FormatException fe)
+            {
+                check = false;
+                error.SetError(txtPrice, "Nhập số");
+            }
+            BookDTO book = new BookDTO
+            {
+                bookTitle = bookTitle,
+                author = author,
+                typeID = typeID,
+                publishingYear = publishingYear,
+                price = price,
+                quantity = quantity,
+                status = true
+
+            };
+            if (saveForAdd)
+            {
+                if (check)
+                {
+                    try
+                    {
+                        BooksDAO dao = new BooksDAO();
+                        check = dao.addNewBook(book);
+                    }
+                    catch (Exception ex)
+                    {
+                        check = false;
+                        MessageBox.Show("ex");
+                    }
+                    if (check)
+                    {
+                        MessageBox.Show("Thêm thành công");
+                        emptyTxt();
+                        btnUpdateBook.Enabled = true;
+                        btnSave.Enabled = false;
+                        btnRemoveBook.Enabled = true;
+                        btnCreateBook.Enabled = true;
+                        loadDgvBooks();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại");
+                    }
+                }
+            }
+            else
+            {
+                if (check)
+                {
+                    try
+                    {
+                        BooksDAO dao = new BooksDAO();
+                        book.bookID = int.Parse(txtBookID.Text);
+                        check = dao.updateBook(book);
+                    }
+                    catch (Exception ex)
+                    {
+                        check = false;
+                        MessageBox.Show("ex");
+                    }
+                    if (check)
+                    {
+                        MessageBox.Show("Sửa thành công");
+                        emptyTxt();
+                        btnUpdateBook.Enabled = true;
+                        btnSave.Enabled = false;
+                        btnRemoveBook.Enabled = true;
+                        btnCreateBook.Enabled = true;
+                        loadDgvBooks();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thất bại");
+                    }
+                }
+            }
+        }
+
+        private void btnCreateBook_Click(object sender, EventArgs e)
+        {
+            btnCreateBook.Enabled = false;
+            emptyTxt();
+            btnRemoveBook.Enabled = false;
+            btnUpdateBook.Enabled = false;
+            saveForAdd = true;
+            btnSave.Enabled = true;
+        }
+
+        private void btnUpdateBook_Click(object sender, EventArgs e)
+        {
+            int index = dgvBooks.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                btnUpdateBook.Enabled = false;
+                btnRemoveBook.Enabled = false;
+                saveForAdd = false;
+                btnCreateBook.Enabled = false;
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Chọn sách để sửa.");
+            }
+        }
+
+        private void dgvBooks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex >= 0)
+            {
+                txtBookID.Text = dgvBooks.Rows[rowIndex].Cells["bookID"].FormattedValue.ToString();
+                txtBookTitle.Text = dgvBooks.Rows[rowIndex].Cells["bookTitle"].FormattedValue.ToString();
+                txtAuthor.Text = dgvBooks.Rows[rowIndex].Cells["author"].FormattedValue.ToString();
+                txtPrice.Text = dgvBooks.Rows[rowIndex].Cells["price"].FormattedValue.ToString();
+                txtPublishingYear.Text = dgvBooks.Rows[rowIndex].Cells["publishingYear"].FormattedValue.ToString();
+                txtQuantity.Text = dgvBooks.Rows[rowIndex].Cells["quantity"].FormattedValue.ToString();
+                string type = dgvBooks.Rows[rowIndex].Cells["typeID"].FormattedValue.ToString();
+                cbxBookType.SelectedItem=type;
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -32,8 +32,9 @@ namespace RentBookApp
             if(result != null)
             {
                 MainForm mf = new MainForm(result , txtUsername.Text);
-                this.Hide();
+                mf.FormClosed += new FormClosedEventHandler(frm_MainFormClosed);
                 mf.Show();
+                this.Hide();
             }
             else
             {
@@ -41,5 +42,10 @@ namespace RentBookApp
             }
 
         }
+        private void frm_MainFormClosed(object sender, FormClosedEventArgs e){
+            this.Show();
+            txtPassword.Text = string.Empty;
+        }
+
     }
 }

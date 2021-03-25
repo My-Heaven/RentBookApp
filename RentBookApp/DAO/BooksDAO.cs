@@ -100,7 +100,7 @@ namespace RentBookApp.DAO
             cmd.Parameters.AddWithValue("@typeID", book.typeID);
             cmd.Parameters.AddWithValue("@author", book.author);
             cmd.Parameters.AddWithValue("@publishingYear", book.publishingYear);
-            cmd.Parameters.AddWithValue("@status", book.status);
+            cmd.Parameters.AddWithValue("@bookID", book.bookID);
             try
             {
                 if (cnn.State == ConnectionState.Closed)
@@ -118,6 +118,33 @@ namespace RentBookApp.DAO
                 cnn.Close();
             }
             return result;
+        }
+        public DataTable getBook(string bookTitle)
+        {
+            DataTable books = null;
+            SqlConnection cnn = new SqlConnection(cs);
+            string SQL = "select bookID, bookTitle, quantity, price, typeID, author, publishingYear, createDate from tblBooks where bookTitle like @bookTitle and status='true'";
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@bookTitle", "%" + bookTitle + "%");
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            books = new DataTable();
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                da.Fill(books);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return books;
         }
     }
 }
