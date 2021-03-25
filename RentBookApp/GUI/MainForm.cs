@@ -312,5 +312,35 @@ namespace RentBookApp
                 MessageBox.Show("Chọn sách để thêm");
             }
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (listBooks != null)
+            {
+                int index = -1;
+                try
+                {
+                    index = int.Parse(lblIndex.Text);
+
+                    listBooks.RemoveAt(index);
+                    loadData();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Chọn sách để xóa");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có gì để xóa");
+            }
+        }
+
+        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            lblIndex.Text = index+"";
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace RentBookApp
             this.lbloaisach = new System.Windows.Forms.Label();
             this.lbtensach = new System.Windows.Forms.Label();
             this.lbBookstatus = new System.Windows.Forms.Label();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvCart = new System.Windows.Forms.DataGridView();
@@ -69,6 +70,7 @@ namespace RentBookApp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblIndex = new System.Windows.Forms.Label();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -106,11 +108,13 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
+            this.tabQuanLi.Controls.Add(this.lblIndex);
             this.tabQuanLi.Controls.Add(this.lbnamxuatban);
             this.tabQuanLi.Controls.Add(this.lbtacgia);
             this.tabQuanLi.Controls.Add(this.lbloaisach);
             this.tabQuanLi.Controls.Add(this.lbtensach);
             this.tabQuanLi.Controls.Add(this.lbBookstatus);
+            this.tabQuanLi.Controls.Add(this.btnHuy);
             this.tabQuanLi.Controls.Add(this.btnRemove);
             this.tabQuanLi.Controls.Add(this.btnAdd);
             this.tabQuanLi.Controls.Add(this.dgvCart);
@@ -172,6 +176,15 @@ namespace RentBookApp
             this.lbBookstatus.Size = new System.Drawing.Size(0, 13);
             this.lbBookstatus.TabIndex = 13;
             // 
+            // btnHuy
+            // 
+            this.btnHuy.Location = new System.Drawing.Point(700, 414);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy.TabIndex = 12;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            // 
             // btnRemove
             // 
             this.btnRemove.Location = new System.Drawing.Point(700, 364);
@@ -180,6 +193,7 @@ namespace RentBookApp
             this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "Xóa";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -201,6 +215,7 @@ namespace RentBookApp
             this.dgvCart.ReadOnly = true;
             this.dgvCart.Size = new System.Drawing.Size(584, 150);
             this.dgvCart.TabIndex = 10;
+            this.dgvCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellClick);
             // 
             // lblPublishingYear
             // 
@@ -448,6 +463,14 @@ namespace RentBookApp
             this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.error.ContainerControl = this;
             // 
+            // lblIndex
+            // 
+            this.lblIndex.AutoSize = true;
+            this.lblIndex.Location = new System.Drawing.Point(814, 364);
+            this.lblIndex.Name = "lblIndex";
+            this.lblIndex.Size = new System.Drawing.Size(0, 13);
+            this.lblIndex.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,5 +536,7 @@ namespace RentBookApp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Label lblIndex;
     }
 }
