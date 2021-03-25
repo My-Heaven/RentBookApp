@@ -34,6 +34,12 @@ namespace RentBookApp
             this.lbStaff = new System.Windows.Forms.Label();
             this.tabManage = new System.Windows.Forms.TabControl();
             this.tabQuanLi = new System.Windows.Forms.TabPage();
+            this.btnCreateOrder = new System.Windows.Forms.Button();
+            this.dpReturnDate = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtRentDate = new System.Windows.Forms.TextBox();
+            this.lblIndex = new System.Windows.Forms.Label();
             this.lbnamxuatban = new System.Windows.Forms.Label();
             this.lbtacgia = new System.Windows.Forms.Label();
             this.lbloaisach = new System.Windows.Forms.Label();
@@ -70,12 +76,6 @@ namespace RentBookApp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblIndex = new System.Windows.Forms.Label();
-            this.txtRentDate = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dpReturnDate = new System.Windows.Forms.DateTimePicker();
-            this.btnCreateOrder = new System.Windows.Forms.Button();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -145,6 +145,59 @@ namespace RentBookApp
             this.tabQuanLi.TabIndex = 0;
             this.tabQuanLi.Text = "Trang Chủ";
             this.tabQuanLi.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateOrder
+            // 
+            this.btnCreateOrder.Location = new System.Drawing.Point(855, 364);
+            this.btnCreateOrder.Name = "btnCreateOrder";
+            this.btnCreateOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateOrder.TabIndex = 19;
+            this.btnCreateOrder.Text = "Tạo order";
+            this.btnCreateOrder.UseVisualStyleBackColor = true;
+            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            // 
+            // dpReturnDate
+            // 
+            this.dpReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpReturnDate.Location = new System.Drawing.Point(700, 80);
+            this.dpReturnDate.Name = "dpReturnDate";
+            this.dpReturnDate.Size = new System.Drawing.Size(114, 20);
+            this.dpReturnDate.TabIndex = 18;
+            this.dpReturnDate.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(643, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Ngày trả";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(643, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Ngày thuê";
+            // 
+            // txtRentDate
+            // 
+            this.txtRentDate.Location = new System.Drawing.Point(700, 30);
+            this.txtRentDate.Name = "txtRentDate";
+            this.txtRentDate.ReadOnly = true;
+            this.txtRentDate.Size = new System.Drawing.Size(114, 20);
+            this.txtRentDate.TabIndex = 16;
+            // 
+            // lblIndex
+            // 
+            this.lblIndex.AutoSize = true;
+            this.lblIndex.Location = new System.Drawing.Point(814, 364);
+            this.lblIndex.Name = "lblIndex";
+            this.lblIndex.Size = new System.Drawing.Size(0, 13);
+            this.lblIndex.TabIndex = 15;
             // 
             // lbnamxuatban
             // 
@@ -473,59 +526,6 @@ namespace RentBookApp
             // 
             this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.error.ContainerControl = this;
-            // 
-            // lblIndex
-            // 
-            this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(814, 364);
-            this.lblIndex.Name = "lblIndex";
-            this.lblIndex.Size = new System.Drawing.Size(0, 13);
-            this.lblIndex.TabIndex = 15;
-            // 
-            // txtRentDate
-            // 
-            this.txtRentDate.Location = new System.Drawing.Point(700, 30);
-            this.txtRentDate.Name = "txtRentDate";
-            this.txtRentDate.ReadOnly = true;
-            this.txtRentDate.Size = new System.Drawing.Size(114, 20);
-            this.txtRentDate.TabIndex = 16;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(643, 37);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Ngày thuê";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(643, 84);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Ngày trả";
-            // 
-            // dpReturnDate
-            // 
-            this.dpReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpReturnDate.Location = new System.Drawing.Point(700, 80);
-            this.dpReturnDate.Name = "dpReturnDate";
-            this.dpReturnDate.Size = new System.Drawing.Size(114, 20);
-            this.dpReturnDate.TabIndex = 18;
-            this.dpReturnDate.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
-            // 
-            // btnCreateOrder
-            // 
-            this.btnCreateOrder.Location = new System.Drawing.Point(855, 364);
-            this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateOrder.TabIndex = 19;
-            this.btnCreateOrder.Text = "Tạo order";
-            this.btnCreateOrder.UseVisualStyleBackColor = true;
-            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
             // 
             // MainForm
             // 
