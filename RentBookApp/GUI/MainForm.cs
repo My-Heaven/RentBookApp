@@ -342,5 +342,24 @@ namespace RentBookApp
             int index = e.RowIndex;
             lblIndex.Text = index+"";
         }
+        void setEmpty()
+        {
+            lbtensach.Text = string.Empty;
+            lbloaisach.Text = string.Empty;
+            lbtacgia.Text = string.Empty;
+            lbnamxuatban.Text = string.Empty;
+            searchBook.Text = string.Empty;
+            cusPhone.Text = string.Empty;
+            lblFullName.Text = string.Empty;
+            lbBookstatus.Text = string.Empty;
+
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            listBooks = null;
+            setEmpty();
+            loadData();
+        }
     }
 }
