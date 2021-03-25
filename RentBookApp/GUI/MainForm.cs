@@ -413,13 +413,21 @@ namespace RentBookApp
         {
             if (checkOrder() == true)
             {
+                float price = 0;
+                foreach(BookDTO b in listBooks)
+                {
+                    price += b.price;
+                }
+                price = price * TongSoNgay;
                 OrderDTO dto = new OrderDTO
                 {
                     creater = this.txtUsername,
                     Costomer = this.cusPhone.Text,
                     orderDate = this.txtRentDate.Text,
                     returnDate = this.dpReturnDate.Value.ToShortDateString(),
-                    status = true
+                    status = true,
+                    price = price
+
                 };
                 OrderDAO dao = new OrderDAO();
                 bool result = dao.createOrder(dto);
@@ -433,7 +441,8 @@ namespace RentBookApp
                             bookID = book.bookID,
                             orderID = orderID,
                             price = book.price
-                        } 
+                        };
+                        dao.createOrderDetail(ordto);
                     }
                     MessageBox.Show("Thành công");
                 }

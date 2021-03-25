@@ -70,7 +70,6 @@ namespace RentBookApp.DAO
             cmd.Parameters.AddWithValue("@orderID", dto.orderID);
             cmd.Parameters.AddWithValue("@bookID", dto.bookID);
             cmd.Parameters.AddWithValue("@price", dto.price);
-            cmd.Parameters.AddWithValue("@price", dto.price);
             try
             {
                 if (cnn.State == ConnectionState.Closed)
