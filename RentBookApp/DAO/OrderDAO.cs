@@ -117,7 +117,7 @@ namespace RentBookApp.DAO
         }
         public DataTable getListOrder(string phoneNumber)
         {
-                string SQL = "select orderID, creater, Costomer, orderDate, returnDate, price, status from[dbo].[tblOrders] where[Costomer] = @cusPhone and[status] = 'true'";
+                string SQL = "select orderID, creater, Costomer, orderDate, returnDate, price from[dbo].[tblOrders] where[Costomer] = @cusPhone and[status] = 'true'";
                 SqlConnection cn = new SqlConnection(cs);
                 SqlCommand cmd = new SqlCommand(SQL, cn);
             cmd.Parameters.AddWithValue("@cusPhone", phoneNumber);
@@ -144,6 +144,7 @@ namespace RentBookApp.DAO
             SqlConnection cn = new SqlConnection(cs);
             SqlCommand cmd = new SqlCommand(SQL, cn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
+            cmd.Parameters.AddWithValue("@orderID", orderID);
             DataTable dtOrderDetail = new DataTable();
             try
             {
@@ -159,6 +160,31 @@ namespace RentBookApp.DAO
             }
             finally { cn.Close(); }
             return dtOrderDetail;
+        }
+        public bool traSach(int orderID)
+        {
+            bool result = false;
+            SqlConnection cnn = new SqlConnection(cs);
+            string sql = "update tblOrders set status='false' where orderID=@orderID";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@orderID", orderID);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return result;
         }
     }
 }

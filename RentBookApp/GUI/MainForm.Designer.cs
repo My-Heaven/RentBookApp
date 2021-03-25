@@ -93,6 +93,7 @@ namespace RentBookApp
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnLogout = new System.Windows.Forms.Button();
             this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.btnTraSach = new System.Windows.Forms.Button();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -413,6 +414,7 @@ namespace RentBookApp
             // 
             // panelDetail
             // 
+            this.panelDetail.Controls.Add(this.btnTraSach);
             this.panelDetail.Controls.Add(this.label17);
             this.panelDetail.Controls.Add(this.dgvDetail);
             this.panelDetail.Location = new System.Drawing.Point(198, 311);
@@ -434,12 +436,14 @@ namespace RentBookApp
             // 
             this.dgvDetail.AllowUserToAddRows = false;
             this.dgvDetail.AllowUserToDeleteRows = false;
+            this.dgvDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetail.Enabled = false;
             this.dgvDetail.Location = new System.Drawing.Point(3, 33);
             this.dgvDetail.MultiSelect = false;
             this.dgvDetail.Name = "dgvDetail";
             this.dgvDetail.ReadOnly = true;
-            this.dgvDetail.Size = new System.Drawing.Size(623, 170);
+            this.dgvDetail.Size = new System.Drawing.Size(623, 121);
             this.dgvDetail.TabIndex = 0;
             // 
             // dgvHistory
@@ -455,6 +459,7 @@ namespace RentBookApp
             this.dgvHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistory.Size = new System.Drawing.Size(794, 163);
             this.dgvHistory.TabIndex = 10;
+            this.dgvHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellClick);
             // 
             // lblfullNameH
             // 
@@ -741,6 +746,16 @@ namespace RentBookApp
             this.dgvBooks.TabIndex = 22;
             this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellClick_1);
             // 
+            // btnTraSach
+            // 
+            this.btnTraSach.Location = new System.Drawing.Point(291, 174);
+            this.btnTraSach.Name = "btnTraSach";
+            this.btnTraSach.Size = new System.Drawing.Size(75, 23);
+            this.btnTraSach.TabIndex = 2;
+            this.btnTraSach.Text = "Trả sách";
+            this.btnTraSach.UseVisualStyleBackColor = true;
+            this.btnTraSach.Click += new System.EventHandler(this.btnTraSach_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,5 +852,6 @@ namespace RentBookApp
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.DataGridView dgvBooks;
+        private System.Windows.Forms.Button btnTraSach;
     }
 }

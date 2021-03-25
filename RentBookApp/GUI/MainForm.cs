@@ -24,7 +24,7 @@ namespace RentBookApp
         bool saveForAdd = true;
         DataTable books;
         Form1 f1;
-        public MainForm(String fullname , String txtUsername)
+        public MainForm(String fullname, String txtUsername)
         {
             InitializeComponent();
             lbStaff.Text = fullname;
@@ -51,7 +51,7 @@ namespace RentBookApp
             }
             dgvCart.DataSource = dtBooks;
             dgvCart.AutoResizeColumns();
-            
+
         }
         void loadDgvBooks(string bookTitle)
         {
@@ -91,8 +91,9 @@ namespace RentBookApp
             if (dto != null)
             {
                 lbtensach.Text = dto.bookTitle;
-                foreach(BookTypeDTO type in bookTypes){
-                    if(type.typeID== dto.typeID)
+                foreach (BookTypeDTO type in bookTypes)
+                {
+                    if (type.typeID == dto.typeID)
                     {
                         lbloaisach.Text = type.typeName;
                     }
@@ -101,7 +102,8 @@ namespace RentBookApp
                 lbnamxuatban.Text = dto.publishingYear.ToString();
                 lbBookstatus.Text = "";
             }
-            else{
+            else
+            {
                 lbBookstatus.Text = "Không tìm thấy";
                 lbtensach.Text = "";
                 lbloaisach.Text = "";
@@ -119,7 +121,7 @@ namespace RentBookApp
             cbxBookType.DataSource = bookTypes;
 
         }
-        
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cusPhone.Text))
@@ -180,7 +182,7 @@ namespace RentBookApp
         private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            lblIndex.Text = index+"";
+            lblIndex.Text = index + "";
         }
         void setEmpty()
         {
@@ -221,7 +223,8 @@ namespace RentBookApp
             try
             {
                 dpReturnDate.Value.ToShortDateString();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Ngày trả không hợp lệ");
                 return false;
@@ -230,7 +233,7 @@ namespace RentBookApp
             DateTime ngaytra = Convert.ToDateTime(dpReturnDate.Value.ToShortDateString());
             TimeSpan Time = ngaytra - ngaymuon;
             this.TongSoNgay = Time.Days;
-            if(TongSoNgay <= 0)
+            if (TongSoNgay <= 0)
             {
                 MessageBox.Show("Ngày thuê không hợp lệ");
                 return false;
@@ -240,8 +243,8 @@ namespace RentBookApp
                 MessageBox.Show("Không có sách để thuê");
                 return false;
             }
-            
-                return true;
+
+            return true;
         }
 
         private void btnCreateOrder_Click(object sender, EventArgs e)
@@ -249,7 +252,7 @@ namespace RentBookApp
             if (checkOrder() == true)
             {
                 float price = 0;
-                foreach(BookDTO b in listBooks)
+                foreach (BookDTO b in listBooks)
                 {
                     price += b.price;
                 }
@@ -269,7 +272,7 @@ namespace RentBookApp
                 if (result == true)
                 {
                     int orderID = dao.getOrderID();
-                    foreach(BookDTO book in listBooks)
+                    foreach (BookDTO book in listBooks)
                     {
                         OrderDetailDTO ordto = new OrderDetailDTO
                         {
@@ -519,7 +522,8 @@ namespace RentBookApp
                     {
                         MessageBox.Show("Xóa Thất bại");
                     }
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -558,6 +562,10 @@ namespace RentBookApp
                 lblfullNameH.Text = result;
                 OrderDAO oDao = new OrderDAO();
                 DataTable oder = oDao.getListOrder(phone);
+                if (oder.Rows.Count == 0)
+                {
+                    MessageBox.Show("Khách hàng đã trả hết sách");
+                }
                 dgvHistory.DataSource = oder;
                 dgvHistory.ClearSelection();
             }
@@ -580,6 +588,40 @@ namespace RentBookApp
                 txtQuantity.Text = dgvBooks.Rows[rowIndex].Cells["quantity"].FormattedValue.ToString();
                 string type = dgvBooks.Rows[rowIndex].Cells["typeID"].FormattedValue.ToString();
                 cbxBookType.SelectedItem = type;
+            }
+        }
+
+        private void dgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex >= 0)
+            {
+                string orderID = dgvHistory.Rows[rowIndex].Cells["orderID"].FormattedValue.ToString();
+                OrderDAO dao = new OrderDAO();
+                DataTable detail = dao.getListOrderDetail(int.Parse(orderID));
+                dgvDetail.DataSource = detail;
+                dgvDetail.ClearSelection();
+                panelDetail.Visible = true;
+            }
+        }
+
+        private void btnTraSach_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvHistory.CurrentCell.RowIndex;
+            string orderID = dgvHistory.Rows[rowIndex].Cells["orderID"].FormattedValue.ToString();
+            OrderDAO dao = new OrderDAO();
+            bool check = dao.traSach(int.Parse(orderID));
+            if (check)
+            {
+                MessageBox.Show("Thành công");
+                panelDetail.Visible = false;
+                DataTable oder = dao.getListOrder(txtPhone.Text);
+                dgvHistory.DataSource = oder;
+                dgvHistory.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show("Thất bại");
             }
         }
     }
