@@ -282,7 +282,10 @@ namespace RentBookApp
                         };
                         dao.createOrderDetail(ordto);
                     }
-                    MessageBox.Show("Thành công");
+                    MessageBox.Show("Số tiền cần trả để mượn sách là : " + price);
+                    listBooks = null;
+                    setEmpty();
+                    loadData();
                 }
                 else
                 {
