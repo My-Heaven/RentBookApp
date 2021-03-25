@@ -71,6 +71,11 @@ namespace RentBookApp
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblIndex = new System.Windows.Forms.Label();
+            this.txtRentDate = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dpReturnDate = new System.Windows.Forms.DateTimePicker();
+            this.btnCreateOrder = new System.Windows.Forms.Button();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -108,6 +113,11 @@ namespace RentBookApp
             // 
             // tabQuanLi
             // 
+            this.tabQuanLi.Controls.Add(this.btnCreateOrder);
+            this.tabQuanLi.Controls.Add(this.dpReturnDate);
+            this.tabQuanLi.Controls.Add(this.label10);
+            this.tabQuanLi.Controls.Add(this.label9);
+            this.tabQuanLi.Controls.Add(this.txtRentDate);
             this.tabQuanLi.Controls.Add(this.lblIndex);
             this.tabQuanLi.Controls.Add(this.lbnamxuatban);
             this.tabQuanLi.Controls.Add(this.lbtacgia);
@@ -472,6 +482,51 @@ namespace RentBookApp
             this.lblIndex.Size = new System.Drawing.Size(0, 13);
             this.lblIndex.TabIndex = 15;
             // 
+            // txtRentDate
+            // 
+            this.txtRentDate.Location = new System.Drawing.Point(700, 30);
+            this.txtRentDate.Name = "txtRentDate";
+            this.txtRentDate.ReadOnly = true;
+            this.txtRentDate.Size = new System.Drawing.Size(114, 20);
+            this.txtRentDate.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(643, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Ngày thuê";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(643, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Ngày trả";
+            // 
+            // dpReturnDate
+            // 
+            this.dpReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpReturnDate.Location = new System.Drawing.Point(700, 80);
+            this.dpReturnDate.Name = "dpReturnDate";
+            this.dpReturnDate.Size = new System.Drawing.Size(114, 20);
+            this.dpReturnDate.TabIndex = 18;
+            this.dpReturnDate.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
+            // 
+            // btnCreateOrder
+            // 
+            this.btnCreateOrder.Location = new System.Drawing.Point(855, 364);
+            this.btnCreateOrder.Name = "btnCreateOrder";
+            this.btnCreateOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateOrder.TabIndex = 19;
+            this.btnCreateOrder.Text = "Tạo order";
+            this.btnCreateOrder.UseVisualStyleBackColor = true;
+            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,5 +594,10 @@ namespace RentBookApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Label lblIndex;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtRentDate;
+        private System.Windows.Forms.DateTimePicker dpReturnDate;
+        private System.Windows.Forms.Button btnCreateOrder;
     }
 }

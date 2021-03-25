@@ -17,13 +17,18 @@ namespace RentBookApp
     {
         List<BookTypeDTO> bookTypes = null;
         String fullname;
+        String txtUsername;
         List<BookDTO> listBooks;
         DataTable dtBooks;
-        public MainForm(String fullname)
+        int TongSoNgay;
+
+        public MainForm(String fullname , String txtUsername)
         {
             InitializeComponent();
             lbStaff.Text = fullname;
             this.fullname = fullname;
+            this.txtUsername = txtUsername;
+            txtRentDate.Text = DateTime.Now.ToShortDateString();
             loadData();
         }
         void loadData()
@@ -360,6 +365,83 @@ namespace RentBookApp
             listBooks = null;
             setEmpty();
             loadData();
+        }
+        bool checkOrder()
+        {
+            if (string.IsNullOrEmpty(this.txtUsername))
+            {
+                MessageBox.Show("Chưa đăng nhập");
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.cusPhone.Text.Trim()))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại khách hàng");
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.txtRentDate.Text.Trim()))
+            {
+                MessageBox.Show("Không có ngày thuê");
+                return false;
+            }
+            try
+            {
+                dpReturnDate.Value.ToShortDateString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ngày trả không hợp lệ");
+                return false;
+            }
+            DateTime ngaymuon = Convert.ToDateTime(txtRentDate.Text);
+            DateTime ngaytra = Convert.ToDateTime(dpReturnDate.Value.ToShortDateString());
+            TimeSpan Time = ngaytra - ngaymuon;
+            this.TongSoNgay = Time.Days;
+            if(TongSoNgay <= 0)
+            {
+                MessageBox.Show("Ngày thuê không hợp lệ");
+                return false;
+            }
+            if (listBooks == null)
+            {
+                MessageBox.Show("Không có sách để thuê");
+                return false;
+            }
+            
+                return true;
+        }
+
+        private void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+            if (checkOrder() == true)
+            {
+                OrderDTO dto = new OrderDTO
+                {
+                    creater = this.txtUsername,
+                    Costomer = this.cusPhone.Text,
+                    orderDate = this.txtRentDate.Text,
+                    returnDate = this.dpReturnDate.Value.ToShortDateString(),
+                    status = true
+                };
+                OrderDAO dao = new OrderDAO();
+                bool result = dao.createOrder(dto);
+                if (result == true)
+                {
+                    int orderID = dao.getOrderID();
+                    foreach(BookDTO book in listBooks)
+                    {
+                        OrderDetailDTO ordto = new OrderDetailDTO
+                        {
+                            bookID = book.bookID,
+                            orderID = orderID,
+                            price = book.price
+                        } 
+                    }
+                    MessageBox.Show("Thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Thất bại");
+                }
+            }
         }
     }
 }

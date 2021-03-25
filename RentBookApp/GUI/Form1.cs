@@ -31,7 +31,7 @@ namespace RentBookApp
             string result = dao.CheckLogin(txtUsername.Text, txtPassword.Text);
             if(result != null)
             {
-                MainForm mf = new MainForm(result);
+                MainForm mf = new MainForm(result , txtUsername.Text);
                 this.Hide();
                 mf.Show();
             }
