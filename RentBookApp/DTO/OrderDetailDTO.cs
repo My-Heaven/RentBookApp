@@ -8,6 +8,7 @@ namespace RentBookApp.DTO
 {
     public class OrderDetailDTO
     {
+        public int detailID { get; set; }
         public int orderID { get; set; }
         public int bookID { get; set; }
         public float price { get; set; }

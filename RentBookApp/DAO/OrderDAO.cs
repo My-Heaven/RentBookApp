@@ -88,5 +88,77 @@ namespace RentBookApp.DAO
             }
             return result;
         }
+        public DataTable getOrder(string userPhone)
+        {
+            DataTable books = null;
+            SqlConnection cnn = new SqlConnection(cs);
+            string SQL = "select bookID, bookTitle, quantity, price, typeID, author, publishingYear, createDate from tblBooks where bookTitle like @bookTitle and status='true'";
+            SqlCommand cmd = new SqlCommand(SQL, cnn);
+            cmd.Parameters.AddWithValue("@bookTitle", "%" + userPhone + "%");
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            books = new DataTable();
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                da.Fill(books);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return books;
+        }
+        public DataTable getListOrder(string phoneNumber)
+        {
+                string SQL = "select orderID, creater, Costomer, orderDate, returnDate, price, status from[dbo].[tblOrders] where[Costomer] = @cusPhone and[status] = 'true'";
+                SqlConnection cn = new SqlConnection(cs);
+                SqlCommand cmd = new SqlCommand(SQL, cn);
+            cmd.Parameters.AddWithValue("@cusPhone", phoneNumber);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dtOrder = new DataTable();
+                try
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+                    da.Fill(dtOrder);
+                }
+                catch (SqlException e)
+                {
+                    throw new Exception(e.Message);
+                }
+                finally { cn.Close(); }
+                return dtOrder;
+        }
+        public DataTable getListOrderDetail(int orderID)
+        {
+            string SQL = "select detailID, orderID, bookID, price from[dbo].[tblOderDetail] where[orderID] = @orderID";
+            SqlConnection cn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand(SQL, cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dtOrderDetail = new DataTable();
+            try
+            {
+                if (cn.State == ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+                da.Fill(dtOrderDetail);
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally { cn.Close(); }
+            return dtOrderDetail;
+        }
     }
 }

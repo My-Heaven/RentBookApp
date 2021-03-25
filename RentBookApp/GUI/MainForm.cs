@@ -32,7 +32,8 @@ namespace RentBookApp
             this.txtUsername = txtUsername;
             txtRentDate.Text = DateTime.Now.ToShortDateString();
             loadData();
-            loadDgvBooks();
+            loadDgvBooks(string.Empty);
+            dgvBooks.ClearSelection();
         }
         void loadData()
         {
@@ -50,14 +51,14 @@ namespace RentBookApp
             }
             dgvCart.DataSource = dtBooks;
             dgvCart.AutoResizeColumns();
-
             
         }
-        void loadDgvBooks()
+        void loadDgvBooks(string bookTitle)
         {
             BooksDAO dao = new BooksDAO();
-            books = dao.getBook(string.Empty);
+            books = dao.getBook(bookTitle);
             dgvBooks.DataSource = books;
+            dgvBooks.ClearSelection();
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
@@ -411,8 +412,7 @@ namespace RentBookApp
                     }
                     catch (Exception ex)
                     {
-                        check = false;
-                        MessageBox.Show("ex");
+                        MessageBox.Show(ex.Message);
                     }
                     if (check)
                     {
@@ -422,7 +422,9 @@ namespace RentBookApp
                         btnSave.Enabled = false;
                         btnRemoveBook.Enabled = true;
                         btnCreateBook.Enabled = true;
-                        loadDgvBooks();
+                        loadDgvBooks(string.Empty);
+                        dgvBooks.Enabled = true;
+                        btnHuy1.Enabled = false;
                     }
                     else
                     {
@@ -442,8 +444,7 @@ namespace RentBookApp
                     }
                     catch (Exception ex)
                     {
-                        check = false;
-                        MessageBox.Show("ex");
+                        MessageBox.Show(ex.Message);
                     }
                     if (check)
                     {
@@ -453,7 +454,8 @@ namespace RentBookApp
                         btnSave.Enabled = false;
                         btnRemoveBook.Enabled = true;
                         btnCreateBook.Enabled = true;
-                        loadDgvBooks();
+                        loadDgvBooks(string.Empty);
+                        btnHuy1.Enabled = false;
                     }
                     else
                     {
@@ -471,18 +473,21 @@ namespace RentBookApp
             btnUpdateBook.Enabled = false;
             saveForAdd = true;
             btnSave.Enabled = true;
+            dgvBooks.Enabled = false;
+            btnHuy1.Enabled = true;
         }
 
         private void btnUpdateBook_Click(object sender, EventArgs e)
         {
             int index = dgvBooks.CurrentCell.RowIndex;
-            if (index >= 0)
+            if (index >= 0 && !string.IsNullOrEmpty(txtBookID.Text))
             {
                 btnUpdateBook.Enabled = false;
                 btnRemoveBook.Enabled = false;
                 saveForAdd = false;
                 btnCreateBook.Enabled = false;
                 btnSave.Enabled = true;
+                btnHuy1.Enabled = true;
             }
             else
             {
@@ -490,7 +495,79 @@ namespace RentBookApp
             }
         }
 
-        private void dgvBooks_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRemoveBook_Click(object sender, EventArgs e)
+        {
+            int index = dgvBooks.CurrentCell.RowIndex;
+            if (index >= 0)
+            {
+                try
+                {
+                    string bookID = txtBookID.Text;
+                    BooksDAO dao = new BooksDAO();
+                    bool check = dao.removeBook(bookID);
+                    if (check)
+                    {
+                        MessageBox.Show("Xóa Thành công.");
+                        loadDgvBooks(string.Empty);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa Thất bại");
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chọn sách để Xóa.");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string search = txtSearch.Text.Trim();
+            loadDgvBooks(search);
+        }
+
+        private void btnHuy1_Click(object sender, EventArgs e)
+        {
+            emptyTxt();
+            dgvBooks.Enabled = true;
+            btnCreateBook.Enabled = true;
+            btnUpdateBook.Enabled = true;
+            btnRemoveBook.Enabled = true;
+            btnSave.Enabled = false;
+            btnHuy1.Enabled = false;
+            dgvBooks.ClearSelection();
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            string phone = txtPhone.Text;
+            CustomerDAO dao = new CustomerDAO();
+            string result = dao.checkCustomer(phone);
+            if (result != null)
+            {
+                lblfullNameH.Text = result;
+                OrderDAO oDao = new OrderDAO();
+                DataTable oder = oDao.getListOrder(phone);
+                dgvHistory.DataSource = oder;
+                dgvHistory.ClearSelection();
+            }
+            else
+            {
+                lblfullNameH.Text = "Khách hàng không tồn tại";
+            }
+        }
+
+        private void dgvBooks_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
             if (rowIndex >= 0)
@@ -502,13 +579,8 @@ namespace RentBookApp
                 txtPublishingYear.Text = dgvBooks.Rows[rowIndex].Cells["publishingYear"].FormattedValue.ToString();
                 txtQuantity.Text = dgvBooks.Rows[rowIndex].Cells["quantity"].FormattedValue.ToString();
                 string type = dgvBooks.Rows[rowIndex].Cells["typeID"].FormattedValue.ToString();
-                cbxBookType.SelectedItem=type;
+                cbxBookType.SelectedItem = type;
             }
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

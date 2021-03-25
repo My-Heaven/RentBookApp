@@ -60,32 +60,46 @@ namespace RentBookApp
             this.cusPhone = new System.Windows.Forms.TextBox();
             this.searchBook = new System.Windows.Forms.TextBox();
             this.tabLichSu = new System.Windows.Forms.TabPage();
+            this.panelDetail = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dgvDetail = new System.Windows.Forms.DataGridView();
+            this.dgvHistory = new System.Windows.Forms.DataGridView();
+            this.lblfullNameH = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.tabQuanLiSach = new System.Windows.Forms.TabPage();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnRemoveBook = new System.Windows.Forms.Button();
+            this.btnUpdateBook = new System.Windows.Forms.Button();
+            this.btnHuy1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnCreateBook = new System.Windows.Forms.Button();
             this.cbxBookType = new System.Windows.Forms.ComboBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtPublishingYear = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.txtBookID = new System.Windows.Forms.TextBox();
             this.txtBookTitle = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtBookID = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnUpdateBook = new System.Windows.Forms.Button();
-            this.btnRemoveBook = new System.Windows.Forms.Button();
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.dgvBooks = new System.Windows.Forms.DataGridView();
             this.tabManage.SuspendLayout();
             this.tabQuanLi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
+            this.tabLichSu.SuspendLayout();
+            this.panelDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
             this.tabQuanLiSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
@@ -384,6 +398,11 @@ namespace RentBookApp
             // 
             // tabLichSu
             // 
+            this.tabLichSu.Controls.Add(this.panelDetail);
+            this.tabLichSu.Controls.Add(this.dgvHistory);
+            this.tabLichSu.Controls.Add(this.lblfullNameH);
+            this.tabLichSu.Controls.Add(this.label16);
+            this.tabLichSu.Controls.Add(this.txtPhone);
             this.tabLichSu.Location = new System.Drawing.Point(4, 22);
             this.tabLichSu.Name = "tabLichSu";
             this.tabLichSu.Padding = new System.Windows.Forms.Padding(3);
@@ -392,11 +411,85 @@ namespace RentBookApp
             this.tabLichSu.Text = "Lịch sử";
             this.tabLichSu.UseVisualStyleBackColor = true;
             // 
+            // panelDetail
+            // 
+            this.panelDetail.Controls.Add(this.label17);
+            this.panelDetail.Controls.Add(this.dgvDetail);
+            this.panelDetail.Location = new System.Drawing.Point(198, 311);
+            this.panelDetail.Name = "panelDetail";
+            this.panelDetail.Size = new System.Drawing.Size(629, 206);
+            this.panelDetail.TabIndex = 11;
+            this.panelDetail.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Chi tiết";
+            // 
+            // dgvDetail
+            // 
+            this.dgvDetail.AllowUserToAddRows = false;
+            this.dgvDetail.AllowUserToDeleteRows = false;
+            this.dgvDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetail.Location = new System.Drawing.Point(3, 33);
+            this.dgvDetail.MultiSelect = false;
+            this.dgvDetail.Name = "dgvDetail";
+            this.dgvDetail.ReadOnly = true;
+            this.dgvDetail.Size = new System.Drawing.Size(623, 170);
+            this.dgvDetail.TabIndex = 0;
+            // 
+            // dgvHistory
+            // 
+            this.dgvHistory.AllowUserToAddRows = false;
+            this.dgvHistory.AllowUserToDeleteRows = false;
+            this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistory.Location = new System.Drawing.Point(100, 132);
+            this.dgvHistory.MultiSelect = false;
+            this.dgvHistory.Name = "dgvHistory";
+            this.dgvHistory.ReadOnly = true;
+            this.dgvHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHistory.Size = new System.Drawing.Size(794, 163);
+            this.dgvHistory.TabIndex = 10;
+            // 
+            // lblfullNameH
+            // 
+            this.lblfullNameH.AutoSize = true;
+            this.lblfullNameH.Enabled = false;
+            this.lblfullNameH.Location = new System.Drawing.Point(402, 86);
+            this.lblfullNameH.Name = "lblfullNameH";
+            this.lblfullNameH.Size = new System.Drawing.Size(0, 13);
+            this.lblfullNameH.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(307, 70);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(92, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "SDT Khách Hàng";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(405, 63);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(206, 20);
+            this.txtPhone.TabIndex = 7;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
+            // 
             // tabQuanLiSach
             // 
             this.tabQuanLiSach.Controls.Add(this.dgvBooks);
+            this.tabQuanLiSach.Controls.Add(this.txtSearch);
+            this.tabQuanLiSach.Controls.Add(this.label14);
             this.tabQuanLiSach.Controls.Add(this.btnRemoveBook);
             this.tabQuanLiSach.Controls.Add(this.btnUpdateBook);
+            this.tabQuanLiSach.Controls.Add(this.btnHuy1);
             this.tabQuanLiSach.Controls.Add(this.btnSave);
             this.tabQuanLiSach.Controls.Add(this.btnCreateBook);
             this.tabQuanLiSach.Controls.Add(this.cbxBookType);
@@ -420,6 +513,65 @@ namespace RentBookApp
             this.tabQuanLiSach.TabIndex = 2;
             this.tabQuanLiSach.Text = "Quản lý sách";
             this.tabQuanLiSach.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(192, 516);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(232, 20);
+            this.txtSearch.TabIndex = 21;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(32, 516);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 13);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Tìm kiếm";
+            // 
+            // btnRemoveBook
+            // 
+            this.btnRemoveBook.Location = new System.Drawing.Point(664, 144);
+            this.btnRemoveBook.Name = "btnRemoveBook";
+            this.btnRemoveBook.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveBook.TabIndex = 18;
+            this.btnRemoveBook.Text = "Xóa";
+            this.btnRemoveBook.UseVisualStyleBackColor = true;
+            this.btnRemoveBook.Click += new System.EventHandler(this.btnRemoveBook_Click);
+            // 
+            // btnUpdateBook
+            // 
+            this.btnUpdateBook.Location = new System.Drawing.Point(664, 88);
+            this.btnUpdateBook.Name = "btnUpdateBook";
+            this.btnUpdateBook.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateBook.TabIndex = 18;
+            this.btnUpdateBook.Text = "Sửa";
+            this.btnUpdateBook.UseVisualStyleBackColor = true;
+            this.btnUpdateBook.Click += new System.EventHandler(this.btnUpdateBook_Click);
+            // 
+            // btnHuy1
+            // 
+            this.btnHuy1.Enabled = false;
+            this.btnHuy1.Location = new System.Drawing.Point(807, 88);
+            this.btnHuy1.Name = "btnHuy1";
+            this.btnHuy1.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy1.TabIndex = 17;
+            this.btnHuy1.Text = "Hủy";
+            this.btnHuy1.UseVisualStyleBackColor = true;
+            this.btnHuy1.Click += new System.EventHandler(this.btnHuy1_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(807, 33);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 17;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCreateBook
             // 
@@ -467,6 +619,14 @@ namespace RentBookApp
             this.txtAuthor.Size = new System.Drawing.Size(232, 20);
             this.txtAuthor.TabIndex = 13;
             // 
+            // txtBookID
+            // 
+            this.txtBookID.Enabled = false;
+            this.txtBookID.Location = new System.Drawing.Point(192, 33);
+            this.txtBookID.Name = "txtBookID";
+            this.txtBookID.Size = new System.Drawing.Size(232, 20);
+            this.txtBookID.TabIndex = 14;
+            // 
             // txtBookTitle
             // 
             this.txtBookTitle.Location = new System.Drawing.Point(192, 69);
@@ -510,6 +670,15 @@ namespace RentBookApp
             this.label5.TabIndex = 7;
             this.label5.Text = "Loại sách";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(32, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 13);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Mã Sách";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -546,67 +715,6 @@ namespace RentBookApp
             this.error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.error.ContainerControl = this;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(32, 33);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(50, 13);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "Mã Sách";
-            // 
-            // txtBookID
-            // 
-            this.txtBookID.Enabled = false;
-            this.txtBookID.Location = new System.Drawing.Point(192, 33);
-            this.txtBookID.Name = "txtBookID";
-            this.txtBookID.Size = new System.Drawing.Size(232, 20);
-            this.txtBookID.TabIndex = 14;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(796, 58);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 17;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnUpdateBook
-            // 
-            this.btnUpdateBook.Location = new System.Drawing.Point(664, 88);
-            this.btnUpdateBook.Name = "btnUpdateBook";
-            this.btnUpdateBook.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdateBook.TabIndex = 18;
-            this.btnUpdateBook.Text = "Sửa";
-            this.btnUpdateBook.UseVisualStyleBackColor = true;
-            this.btnUpdateBook.Click += new System.EventHandler(this.btnUpdateBook_Click);
-            // 
-            // btnRemoveBook
-            // 
-            this.btnRemoveBook.Location = new System.Drawing.Point(664, 144);
-            this.btnRemoveBook.Name = "btnRemoveBook";
-            this.btnRemoveBook.Size = new System.Drawing.Size(75, 23);
-            this.btnRemoveBook.TabIndex = 18;
-            this.btnRemoveBook.Text = "Xóa";
-            this.btnRemoveBook.UseVisualStyleBackColor = true;
-            // 
-            // dgvBooks
-            // 
-            this.dgvBooks.AllowUserToAddRows = false;
-            this.dgvBooks.AllowUserToDeleteRows = false;
-            this.dgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Location = new System.Drawing.Point(35, 343);
-            this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.ReadOnly = true;
-            this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBooks.Size = new System.Drawing.Size(847, 150);
-            this.dgvBooks.TabIndex = 19;
-            this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellClick);
-            // 
             // btnLogout
             // 
             this.btnLogout.Location = new System.Drawing.Point(926, 4);
@@ -616,6 +724,22 @@ namespace RentBookApp
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // dgvBooks
+            // 
+            this.dgvBooks.AllowUserToAddRows = false;
+            this.dgvBooks.AllowUserToDeleteRows = false;
+            this.dgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBooks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBooks.Location = new System.Drawing.Point(35, 340);
+            this.dgvBooks.MultiSelect = false;
+            this.dgvBooks.Name = "dgvBooks";
+            this.dgvBooks.ReadOnly = true;
+            this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBooks.Size = new System.Drawing.Size(847, 150);
+            this.dgvBooks.TabIndex = 22;
+            this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellClick_1);
             // 
             // MainForm
             // 
@@ -634,6 +758,12 @@ namespace RentBookApp
             this.tabQuanLi.ResumeLayout(false);
             this.tabQuanLi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
+            this.tabLichSu.ResumeLayout(false);
+            this.tabLichSu.PerformLayout();
+            this.panelDetail.ResumeLayout(false);
+            this.panelDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
             this.tabQuanLiSach.ResumeLayout(false);
             this.tabQuanLiSach.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
@@ -695,7 +825,17 @@ namespace RentBookApp
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnRemoveBook;
         private System.Windows.Forms.Button btnUpdateBook;
-        private System.Windows.Forms.DataGridView dgvBooks;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnHuy1;
+        private System.Windows.Forms.Panel panelDetail;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView dgvDetail;
+        private System.Windows.Forms.DataGridView dgvHistory;
+        private System.Windows.Forms.Label lblfullNameH;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.DataGridView dgvBooks;
     }
 }

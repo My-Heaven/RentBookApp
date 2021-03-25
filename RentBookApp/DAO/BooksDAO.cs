@@ -15,7 +15,7 @@ namespace RentBookApp.DAO
         public BookDTO findBook(string BookID)
         {
             SqlConnection cn = new SqlConnection(cs);
-            string SQL = "select bookID,bookTitle, quantity, price, typeID, author, publishingYear, createDate, status from [dbo].[tblBooks] where [bookID] = @bookID";
+            string SQL = "select bookID,bookTitle, quantity, price, typeID, author, publishingYear, createDate, status from [dbo].[tblBooks] where [bookID] = @bookID and status='true' ";
             SqlCommand cmd = new SqlCommand(SQL, cn);
             cmd.Parameters.AddWithValue("@bookID", BookID);
             if (cn.State == ConnectionState.Closed)
@@ -145,6 +145,32 @@ namespace RentBookApp.DAO
                 cnn.Close();
             }
             return books;
+        }
+
+        public bool removeBook(string bookID)
+        {
+            bool result = false;
+            SqlConnection cnn = new SqlConnection(cs);
+            string sql = "update tblBooks set status='false' where bookID=@bookID";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            cmd.Parameters.AddWithValue("@bookID", bookID);
+            try
+            {
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return result;
         }
     }
 }
