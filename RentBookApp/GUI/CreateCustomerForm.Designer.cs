@@ -131,6 +131,8 @@ namespace RentBookApp.GUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateCustomerForm";
             this.Text = "CreateCustomerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateCustomerForm_FormClosing);
